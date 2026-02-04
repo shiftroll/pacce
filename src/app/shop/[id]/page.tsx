@@ -4,10 +4,10 @@ import { useState } from "react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { Minus, Plus, ShoppingCart, Check, Truck, Shield } from "lucide-react";
+import { Minus, Plus, Check, Truck, Shield } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import Button from "@/components/Button";
 import ProductCard from "@/components/ProductCard";
+import TrackedBuyButton from "@/components/TrackedBuyButton";
 
 // Mock product data - in real app this would come from API/CMS
 const productsData: Record<string, {
@@ -254,16 +254,14 @@ export default function ProductPage() {
 
               {/* Purchase Button */}
               <div className="space-y-3">
-                <Button
-                  href="https://www.tokopedia.com"
-                  external
+                <TrackedBuyButton
+                  productId={product.id}
+                  productName={product.name}
+                  productSlug={product.id}
                   variant="tokopedia"
                   size="lg"
                   className="w-full"
-                >
-                  <ShoppingCart className="mr-2" size={20} />
-                  BUY ON TOKOPEDIA
-                </Button>
+                />
                 <p className="text-xs text-gray-500 tracking-wide text-center">
                   Transaction handled securely via Tokopedia
                 </p>
