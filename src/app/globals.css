@@ -1,0 +1,136 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0A0A0A;
+  --foreground: #F5F5F5;
+  --primary-accent: #DFFF00;
+  --secondary-accent: #333333;
+  --tokopedia-green: #42B549;
+  --font-oswald: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
+  --font-inter: 'Inter', var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-inter);
+}
+
+/* Uppercase bold headers */
+h1, h2, h3 {
+  font-family: var(--font-oswald);
+  text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+/* Custom scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0A0A0A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #444444;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(223, 255, 0, 0.3);
+  color: #F5F5F5;
+}
+
+/* Hide scrollbar for filter tabs */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+@layer base {
+  /* Focus styles for accessibility */
+  :focus-visible {
+    outline: 2px solid var(--primary-accent);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* Ghost button style */
+  .btn-ghost {
+    @apply border border-foreground bg-transparent text-foreground
+           hover:bg-foreground hover:text-background transition-all duration-300;
+  }
+
+  /* Primary accent button */
+  .btn-primary {
+    @apply bg-primary-accent text-background font-semibold
+           hover:bg-opacity-90 transition-all duration-300;
+  }
+
+  /* Tokopedia button */
+  .btn-tokopedia {
+    @apply border border-tokopedia-green text-tokopedia-green bg-transparent
+           hover:bg-tokopedia-green hover:text-white transition-all duration-300;
+  }
+
+  /* Card style */
+  .card {
+    @apply bg-secondary-accent rounded-[4px] overflow-hidden;
+  }
+
+  /* Section container */
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Bento grid */
+  .bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+  }
+
+  /* Font classes */
+  .font-heading {
+    font-family: var(--font-oswald);
+  }
+
+  .font-body {
+    font-family: var(--font-inter);
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* High contrast line */
+  .line-accent {
+    @apply border-primary-accent;
+  }
+
+  /* Backdrop blur for navigation */
+  .nav-blur {
+    @apply backdrop-blur-md bg-background/80;
+  }
+}
