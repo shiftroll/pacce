@@ -143,7 +143,7 @@ export default function LastManStandingPage() {
             <ScrollReveal>
               <div className="relative aspect-square overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80"
                   alt="Runner in action"
                   fill
                   className="object-cover"
