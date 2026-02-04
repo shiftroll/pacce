@@ -12,54 +12,54 @@ const products = [
     id: "electrolyte-original",
     name: "Electrolyte Mix Original",
     price: "Rp 185.000",
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80",
     category: "HYDRATION",
   },
   {
     id: "electrolyte-citrus",
     name: "Electrolyte Mix Citrus",
     price: "Rp 185.000",
-    image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&q=80",
     category: "HYDRATION",
   },
   {
     id: "electrolyte-berry",
     name: "Electrolyte Mix Berry",
     price: "Rp 185.000",
-    image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=800&q=80",
     category: "HYDRATION",
   },
   {
     id: "recovery-blend",
     name: "Recovery Blend Pro",
     price: "Rp 245.000",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1594882645126-14020914d58d?w=800&q=80",
     category: "RECOVERY",
   },
   {
     id: "recovery-night",
     name: "Night Recovery Formula",
     price: "Rp 275.000",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1502904550040-7534597429ae?w=800&q=80",
     category: "RECOVERY",
   },
   {
     id: "hydration-pack",
-    name: "Complete Hydration Pack",
+    name: "Marathon Hydration Pack",
     price: "Rp 495.000",
-    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1461896836934-afa09fc6c0f0?w=800&q=80",
     category: "BUNDLES",
   },
   {
     id: "pre-workout",
-    name: "Pre-Workout Formula",
+    name: "Pre-Run Formula",
     price: "Rp 225.000",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&q=80",
     category: "PERFORMANCE",
   },
   {
     id: "endurance-mix",
-    name: "Endurance Mix",
+    name: "Ultra Endurance Mix",
     price: "Rp 195.000",
     image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80",
     category: "HYDRATION",
@@ -68,28 +68,28 @@ const products = [
     id: "ultra-pack",
     name: "Ultra Runner Pack",
     price: "Rp 750.000",
-    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?w=800&q=80",
     category: "BUNDLES",
   },
   {
     id: "focus-formula",
-    name: "Mental Focus Formula",
+    name: "Race Day Focus",
     price: "Rp 235.000",
-    image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80",
     category: "PERFORMANCE",
   },
   {
     id: "muscle-recovery",
-    name: "Muscle Recovery Complex",
+    name: "Post-Run Recovery",
     price: "Rp 285.000",
-    image: "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1571731956672-f2b94d7dd0cb?w=800&q=80",
     category: "RECOVERY",
   },
   {
     id: "daily-hydration",
-    name: "Daily Hydration Sachet",
+    name: "Daily Runner Sachet",
     price: "Rp 145.000",
-    image: "https://images.unsplash.com/photo-1612487528505-d2f4a94f5cdb?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1483721310020-03333e577078?w=800&q=80",
     category: "HYDRATION",
   },
 ];
@@ -131,11 +131,11 @@ export default function ShopPage() {
                 SHOP
               </span>
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-foreground mt-4">
-                FUEL YOUR PERFORMANCE
+                FUEL YOUR RUN
               </h1>
               <p className="mt-6 text-gray-400 text-lg tracking-wide">
                 Science-backed hydration and recovery products designed for
-                athletes who demand the best.
+                runners who demand the best.
               </p>
             </div>
           </ScrollReveal>
@@ -196,10 +196,10 @@ export default function ShopPage() {
           <ScrollReveal>
             <div className="text-center max-w-2xl mx-auto">
               <h2 className="font-heading text-2xl md:text-3xl font-bold tracking-wide text-foreground">
-                CAN&apos;T FIND WHAT YOU&apos;RE LOOKING FOR?
+                RUNNING CLUB OR TEAM?
               </h2>
               <p className="mt-4 text-gray-400 tracking-wide">
-                Contact us for custom orders, bulk pricing, or team sponsorships.
+                Contact us for bulk pricing, team sponsorships, or race event partnerships.
               </p>
               <a
                 href="mailto:hello@pacce.id"

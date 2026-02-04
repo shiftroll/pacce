@@ -52,8 +52,8 @@ export default function LastManStandingPage() {
       <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1461896836934-afa09fc6c0f0?w=1920&q=80"
-            alt="Stadium at night"
+            src="https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=1920&q=80"
+            alt="Runner on track at dusk"
             fill
             className="object-cover"
             priority
@@ -143,7 +143,7 @@ export default function LastManStandingPage() {
             <ScrollReveal>
               <div className="relative aspect-square overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80"
+                  src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80"
                   alt="Runner in action"
                   fill
                   className="object-cover"

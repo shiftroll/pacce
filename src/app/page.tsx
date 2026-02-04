@@ -13,40 +13,40 @@ const products = [
     id: "electrolyte-original",
     name: "Electrolyte Mix Original",
     price: "Rp 185.000",
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80",
     category: "HYDRATION",
   },
   {
     id: "electrolyte-citrus",
     name: "Electrolyte Mix Citrus",
     price: "Rp 185.000",
-    image: "https://images.unsplash.com/photo-1622597467836-f3285f2131b8?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&q=80",
     category: "HYDRATION",
   },
   {
     id: "recovery-blend",
     name: "Recovery Blend Pro",
     price: "Rp 245.000",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1594882645126-14020914d58d?w=800&q=80",
     category: "RECOVERY",
   },
   {
     id: "hydration-pack",
     name: "Complete Hydration Pack",
     price: "Rp 495.000",
-    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1461896836934-afa09fc6c0f0?w=800&q=80",
     category: "BUNDLE",
   },
   {
     id: "pre-workout",
-    name: "Pre-Workout Formula",
+    name: "Pre-Run Formula",
     price: "Rp 225.000",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&q=80",
     category: "PERFORMANCE",
   },
   {
     id: "endurance-mix",
-    name: "Endurance Mix",
+    name: "Marathon Mix",
     price: "Rp 195.000",
     image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80",
     category: "HYDRATION",
@@ -81,10 +81,10 @@ export default function Home() {
             loop
             playsInline
             className="w-full h-full object-cover"
-            poster="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1920&q=80"
+            poster="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1920&q=80"
           >
             <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-running-through-the-city-at-night-1282-large.mp4"
+              src="https://assets.mixkit.co/videos/preview/mixkit-man-running-on-the-beach-at-sunset-1817-large.mp4"
               type="video/mp4"
             />
           </video>
@@ -99,9 +99,9 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider text-foreground leading-tight"
           >
-            HYDRATION.
+            RUN FURTHER.
             <br />
-            <span className="text-primary-accent">WITHOUT COMPROMISE.</span>
+            <span className="text-primary-accent">RECOVER FASTER.</span>
           </motion.h1>
 
           <motion.p
@@ -110,8 +110,8 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="mt-6 text-lg md:text-xl text-gray-300 tracking-wide max-w-2xl mx-auto"
           >
-            Engineered with precision. Formulated with science. Built for athletes
-            who refuse to settle.
+            Engineered for runners. Formulated with science. Built for those
+            who chase the horizon.
           </motion.p>
 
           <motion.div
@@ -199,8 +199,8 @@ export default function Home() {
             <ScrollReveal direction="right" delay={0.2}>
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Image
-                  src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80"
-                  alt="Runner at night"
+                  src="https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=800&q=80"
+                  alt="Runner on track at dusk"
                   fill
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -229,7 +229,7 @@ export default function Home() {
                 THE SCIENCE
               </span>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
-                ENGINEERED FOR PERFORMANCE
+                ENGINEERED FOR RUNNERS
               </h2>
             </div>
           </ScrollReveal>
@@ -240,21 +240,21 @@ export default function Home() {
                 title: "SODIUM",
                 value: "1000mg",
                 description:
-                  "Optimal sodium concentration for rapid fluid absorption and electrolyte balance during intense exercise.",
+                  "Optimal sodium concentration for rapid fluid absorption. Prevents hyponatremia during long runs and marathons.",
                 icon: "Na",
               },
               {
                 title: "POTASSIUM",
                 value: "200mg",
                 description:
-                  "Essential for muscle function and nerve transmission. Prevents cramping during extended performance.",
+                  "Essential for muscle function and nerve transmission. Prevents cramping at mile 20 and beyond.",
                 icon: "K",
               },
               {
                 title: "MAGNESIUM",
                 value: "60mg",
                 description:
-                  "Supports energy production and muscle recovery. Critical for over 300 enzymatic reactions.",
+                  "Supports energy production and muscle recovery. Critical for reducing post-run fatigue.",
                 icon: "Mg",
               },
             ].map((item, index) => (
@@ -300,7 +300,7 @@ export default function Home() {
                   SHOP
                 </span>
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
-                  OUR PRODUCTS
+                  FUEL YOUR RUN
                 </h2>
               </div>
               <Link
@@ -347,15 +347,15 @@ export default function Home() {
                 ))}
               </div>
               <blockquote className="font-heading text-2xl md:text-3xl lg:text-4xl tracking-wide text-foreground leading-relaxed">
-                &quot;PACCE HAS COMPLETELY TRANSFORMED MY TRAINING. THE DIFFERENCE
-                IN MY ENDURANCE AND RECOVERY IS UNDENIABLE.&quot;
+                &quot;PACCE GOT ME THROUGH MY FIRST 100K ULTRA. NO CRAMPS, NO BONKING.
+                JUST PURE PERFORMANCE WHEN I NEEDED IT MOST.&quot;
               </blockquote>
               <div className="mt-8">
                 <p className="text-foreground font-medium tracking-wider">
                   ANDI PRATAMA
                 </p>
                 <p className="text-gray-500 text-sm tracking-wider">
-                  PROFESSIONAL ULTRAMARATHON RUNNER
+                  ULTRAMARATHON RUNNER • 100K FINISHER
                 </p>
               </div>
             </div>
@@ -370,11 +370,11 @@ export default function Home() {
             <div className="relative overflow-hidden bg-secondary-accent p-8 md:p-16">
               <div className="relative z-10 max-w-2xl">
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground">
-                  READY TO ELEVATE YOUR PERFORMANCE?
+                  READY TO RUN YOUR BEST?
                 </h2>
                 <p className="mt-6 text-gray-400 text-lg tracking-wide">
-                  Join thousands of athletes who trust PACCE for their hydration
-                  needs. Available exclusively on Tokopedia.
+                  Join thousands of runners who trust PACCE for their hydration
+                  needs. From 5Ks to ultramarathons.
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <Button
