@@ -53,7 +53,7 @@ export default function LastManStandingPage() {
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=1920&q=80"
-            alt="Stadium at night"
+            alt="Runner on track at dusk"
             fill
             className="object-cover"
             priority

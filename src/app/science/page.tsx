@@ -12,73 +12,73 @@ const categories = ["All", "Hydration", "Recovery", "Nutrition"];
 const articles = [
   {
     id: "sodium-science",
-    title: "Why Sodium Is Your Most Important Electrolyte",
-    excerpt: "Understanding the critical role of sodium in athletic performance and how to optimize your intake.",
-    image: "https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=800&q=80",
+    title: "Why Sodium Is Critical for Marathon Runners",
+    excerpt: "Understanding the critical role of sodium in preventing hyponatremia during long distance runs.",
+    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80",
     category: "Hydration",
     readTime: "5 min read",
   },
   {
-    id: "post-workout-window",
-    title: "The Post-Workout Recovery Window: Myth or Reality?",
-    excerpt: "We dive into the science behind the anabolic window and what research actually says about timing.",
-    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
+    id: "post-run-window",
+    title: "The 30-Minute Post-Run Window: Myth or Reality?",
+    excerpt: "We dive into the science behind recovery timing and what research says about refueling after runs.",
+    image: "https://images.unsplash.com/photo-1594882645126-14020914d58d?w=800&q=80",
     category: "Recovery",
     readTime: "7 min read",
   },
   {
-    id: "hydration-endurance",
-    title: "Hydration Strategies for Endurance Athletes",
-    excerpt: "How to calculate your sweat rate and develop a personalized hydration plan for long-distance events.",
+    id: "hydration-marathon",
+    title: "Hydration Strategies for Marathon Day",
+    excerpt: "How to calculate your sweat rate and develop a personalized hydration plan for race day.",
     image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80",
     category: "Hydration",
     readTime: "8 min read",
   },
   {
-    id: "magnesium-performance",
-    title: "Magnesium: The Overlooked Mineral for Performance",
-    excerpt: "Why athletes are often deficient in magnesium and how supplementation can improve your results.",
-    image: "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80",
+    id: "magnesium-cramping",
+    title: "Magnesium: The Overlooked Mineral for Runners",
+    excerpt: "Why runners are often deficient in magnesium and how it affects cramping and recovery.",
+    image: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&q=80",
     category: "Nutrition",
     readTime: "6 min read",
   },
   {
-    id: "sleep-recovery",
-    title: "How Sleep Impacts Athletic Recovery",
-    excerpt: "The connection between quality sleep and muscle repair, hormone regulation, and performance.",
-    image: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=800&q=80",
+    id: "sleep-running",
+    title: "How Sleep Impacts Your Running Performance",
+    excerpt: "The connection between quality sleep and running economy, injury prevention, and race times.",
+    image: "https://images.unsplash.com/photo-1502904550040-7534597429ae?w=800&q=80",
     category: "Recovery",
     readTime: "6 min read",
   },
   {
     id: "potassium-cramping",
-    title: "Potassium and Muscle Cramping: What Science Says",
-    excerpt: "Debunking myths about potassium and cramps while exploring the true causes of exercise-induced cramping.",
-    image: "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80",
+    title: "Why Runners Cramp at Mile 20",
+    excerpt: "Debunking myths about potassium and cramps while exploring the true causes of running cramps.",
+    image: "https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=800&q=80",
     category: "Hydration",
     readTime: "5 min read",
   },
   {
     id: "carb-loading",
-    title: "Modern Carb Loading: Beyond the Pasta Dinner",
-    excerpt: "Evidence-based approaches to glycogen loading for marathon and ultra-endurance events.",
-    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80",
+    title: "Carb Loading for Marathons: The Modern Approach",
+    excerpt: "Evidence-based approaches to glycogen loading for your next marathon or ultra event.",
+    image: "https://images.unsplash.com/photo-1461896836934-afa09fc6c0f0?w=800&q=80",
     category: "Nutrition",
     readTime: "9 min read",
   },
   {
-    id: "heat-adaptation",
-    title: "Heat Adaptation: Training in Hot Conditions",
-    excerpt: "How to safely acclimate to heat stress and the physiological benefits for performance.",
-    image: "https://images.unsplash.com/photo-1581009146145-b5ef050c149a?w=800&q=80",
+    id: "heat-running",
+    title: "Running in the Heat: Adaptation Strategies",
+    excerpt: "How to safely train in hot conditions and the physiological benefits for race performance.",
+    image: "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&q=80",
     category: "Recovery",
     readTime: "7 min read",
   },
   {
-    id: "protein-timing",
-    title: "Protein Timing: Does It Really Matter?",
-    excerpt: "Examining the latest research on protein distribution and its effects on muscle protein synthesis.",
-    image: "https://images.unsplash.com/photo-1549060279-7e168fcee0c2?w=800&q=80",
+    id: "fueling-ultras",
+    title: "Fueling for Ultramarathons: Beyond Gels",
+    excerpt: "Advanced nutrition strategies for running 50K, 100K, and beyond without bonking.",
+    image: "https://images.unsplash.com/photo-1513593771513-7b58b6c4af38?w=800&q=80",
     category: "Nutrition",
     readTime: "6 min read",
   },
@@ -86,8 +86,8 @@ const articles = [
 
 const scienceStats = [
   { icon: Beaker, value: "12", label: "Research Studies Cited" },
-  { icon: Activity, value: "1000+", label: "Athletes Tested" },
-  { icon: Zap, value: "97%", label: "Satisfaction Rate" },
+  { icon: Activity, value: "1000+", label: "Runners Tested" },
+  { icon: Zap, value: "97%", label: "Runner Satisfaction" },
   { icon: Brain, value: "3", label: "Years of Development" },
 ];
 
@@ -167,7 +167,7 @@ export default function SciencePage() {
                 THE FORMULA
               </span>
               <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-wide text-foreground mt-4">
-                ENGINEERED FOR PERFORMANCE
+                ENGINEERED FOR RUNNERS
               </h2>
             </div>
           </ScrollReveal>
@@ -179,21 +179,21 @@ export default function SciencePage() {
                 title: "SODIUM",
                 value: "1000mg",
                 description:
-                  "Based on research showing 1000-1500mg sodium per liter is optimal for rapid fluid absorption. Our formula sits at the scientific sweet spot for maximum hydration efficiency.",
+                  "Optimal for preventing hyponatremia during long runs and marathons. Our formula matches what elite runners lose in sweat during race conditions.",
               },
               {
                 icon: "K",
                 title: "POTASSIUM",
                 value: "200mg",
                 description:
-                  "Essential for maintaining cellular fluid balance and supporting nerve impulse transmission. Critical for preventing exercise-associated muscle cramping.",
+                  "Essential for muscle function and preventing cramping at mile 20 and beyond. Critical for runners pushing through the wall.",
               },
               {
                 icon: "Mg",
                 title: "MAGNESIUM",
                 value: "60mg",
                 description:
-                  "Involved in over 300 enzymatic reactions including energy production and protein synthesis. Studies show athletes often have suboptimal magnesium status.",
+                  "Reduces post-run fatigue and supports recovery. Studies show runners often have suboptimal magnesium status after long training blocks.",
               },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 0.15}>
