@@ -34,7 +34,7 @@ const products = [
     id: "hydration-pack",
     name: "Complete Hydration Pack",
     price: "Rp 495.000",
-    image: "https://images.unsplash.com/photo-1461896836934-afa09fc6c0f0?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=800&q=80",
     category: "BUNDLE",
   },
   {
