@@ -47,7 +47,7 @@ const products = [
     id: "hydration-pack",
     name: "Marathon Hydration Pack",
     price: "Rp 495.000",
-    image: "https://images.unsplash.com/photo-1461896836934-afa09fc6c0f0?w=800&q=80",
+    image: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&q=80",
     category: "BUNDLES",
   },
   {
