@@ -52,7 +52,7 @@ export default function LastManStandingPage() {
       <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1461896836934-afa09fc6c0f0?w=1920&q=80"
+            src="https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=1920&q=80"
             alt="Stadium at night"
             fill
             className="object-cover"
