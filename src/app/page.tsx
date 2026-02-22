@@ -39,14 +39,14 @@ const products = [
   },
   {
     id: "pre-workout",
-    name: "Pre-Run Formula",
+    name: "Pre-Workout Formula",
     price: "Rp 225.000",
     image: "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&q=80",
     category: "PERFORMANCE",
   },
   {
     id: "endurance-mix",
-    name: "Marathon Mix",
+    name: "Endurance Mix",
     price: "Rp 195.000",
     image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80",
     category: "HYDRATION",
@@ -99,19 +99,19 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="font-heading text-4xl md:text-6xl lg:text-7xl font-bold tracking-wider text-foreground leading-tight"
           >
-            RUN FURTHER.
+            HYDRATION.
             <br />
-            <span className="text-primary-accent">RECOVER FASTER.</span>
+            <span className="text-primary-accent">WITHOUT COMPROMISE.</span>
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-6 text-lg md:text-xl text-gray-300 tracking-wide max-w-2xl mx-auto"
+            className="mt-6 text-xl md:text-2xl text-gray-300 tracking-wide max-w-2xl mx-auto"
           >
-            Engineered for runners. Formulated with science. Built for those
-            who chase the horizon.
+            Engineered with precision. Formulated with science. Built for athletes
+            who refuse to settle.
           </motion.p>
 
           <motion.div
@@ -157,7 +157,7 @@ export default function Home() {
             {/* Text Content */}
             <div className="space-y-6">
               <ScrollReveal direction="left">
-                <span className="text-primary-accent text-sm tracking-widest font-medium">
+                <span className="text-primary-accent text-base md:text-lg tracking-widest font-medium">
                   UPCOMING EVENT
                 </span>
               </ScrollReveal>
@@ -221,15 +221,15 @@ export default function Home() {
       </section>
 
       {/* Why PACCE Section */}
-      <section className="py-20 md:py-32 bg-dark-grey">
+      <section className="py-20 md:py-32 bg-tokopedia-green">
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-primary-accent text-sm tracking-widest font-medium">
+              <span className="text-white/80 text-base md:text-lg tracking-widest font-medium">
                 THE SCIENCE
               </span>
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
-                ENGINEERED FOR RUNNERS
+              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-white mt-4">
+                ENGINEERED FOR PERFORMANCE
               </h2>
             </div>
           </ScrollReveal>
@@ -240,38 +240,38 @@ export default function Home() {
                 title: "SODIUM",
                 value: "1000mg",
                 description:
-                  "Optimal sodium concentration for rapid fluid absorption. Prevents hyponatremia during long runs and marathons.",
+                  "Optimal sodium concentration for rapid fluid absorption and electrolyte balance during intense exercise.",
                 icon: "Na",
               },
               {
                 title: "POTASSIUM",
                 value: "200mg",
                 description:
-                  "Essential for muscle function and nerve transmission. Prevents cramping at mile 20 and beyond.",
+                  "Essential for muscle function and nerve transmission. Prevents cramping during extended performance.",
                 icon: "K",
               },
               {
                 title: "MAGNESIUM",
                 value: "60mg",
                 description:
-                  "Supports energy production and muscle recovery. Critical for reducing post-run fatigue.",
+                  "Supports energy production and muscle recovery. Critical for over 300 enzymatic reactions.",
                 icon: "Mg",
               },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 0.15}>
-                <div className="bg-secondary-accent p-8 group hover:border-primary-accent border border-transparent transition-colors">
-                  <div className="w-16 h-16 flex items-center justify-center border border-primary-accent mb-6">
-                    <span className="font-heading text-2xl text-primary-accent">
+                <div className="bg-white/10 p-8 group hover:bg-white/20 border border-white/20 transition-colors">
+                  <div className="w-16 h-16 flex items-center justify-center border border-white mb-6">
+                    <span className="font-heading text-2xl text-white">
                       {item.icon}
                     </span>
                   </div>
-                  <h3 className="font-heading text-2xl tracking-wide text-foreground mb-2">
+                  <h3 className="font-heading text-2xl tracking-wide text-white mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-primary-accent text-3xl font-bold mb-4">
+                  <p className="text-white text-3xl font-bold mb-4">
                     {item.value}
                   </p>
-                  <p className="text-gray-400 text-sm tracking-wide leading-relaxed">
+                  <p className="text-white/80 text-base tracking-wide leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -281,7 +281,7 @@ export default function Home() {
 
           <ScrollReveal delay={0.4}>
             <div className="text-center mt-12">
-              <Button href="/science" variant="ghost">
+              <Button href="/science" variant="ghost" className="border-white text-white hover:bg-white hover:text-tokopedia-green">
                 EXPLORE THE SCIENCE
                 <ArrowRight className="ml-2" size={18} />
               </Button>
@@ -296,11 +296,11 @@ export default function Home() {
           <ScrollReveal>
             <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
               <div>
-                <span className="text-primary-accent text-sm tracking-widest font-medium">
+                <span className="text-primary-accent text-base md:text-lg tracking-widest font-medium">
                   SHOP
                 </span>
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
-                  FUEL YOUR RUN
+                  OUR PRODUCTS
                 </h2>
               </div>
               <Link
@@ -347,15 +347,15 @@ export default function Home() {
                 ))}
               </div>
               <blockquote className="font-heading text-2xl md:text-3xl lg:text-4xl tracking-wide text-foreground leading-relaxed">
-                &quot;PACCE GOT ME THROUGH MY FIRST 100K ULTRA. NO CRAMPS, NO BONKING.
-                JUST PURE PERFORMANCE WHEN I NEEDED IT MOST.&quot;
+                &quot;PACCE HAS COMPLETELY TRANSFORMED MY TRAINING. THE DIFFERENCE
+                IN MY ENDURANCE AND RECOVERY IS UNDENIABLE.&quot;
               </blockquote>
               <div className="mt-8">
                 <p className="text-foreground font-medium tracking-wider">
                   ANDI PRATAMA
                 </p>
                 <p className="text-gray-500 text-sm tracking-wider">
-                  ULTRAMARATHON RUNNER • 100K FINISHER
+                  PROFESSIONAL ULTRAMARATHON RUNNER
                 </p>
               </div>
             </div>
@@ -370,11 +370,11 @@ export default function Home() {
             <div className="relative overflow-hidden bg-secondary-accent p-8 md:p-16">
               <div className="relative z-10 max-w-2xl">
                 <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground">
-                  READY TO RUN YOUR BEST?
+                  READY TO ELEVATE YOUR PERFORMANCE?
                 </h2>
                 <p className="mt-6 text-gray-400 text-lg tracking-wide">
-                  Join thousands of runners who trust PACCE for their hydration
-                  needs. From 5Ks to ultramarathons.
+                  Join thousands of athletes who trust PACCE for their hydration
+                  needs. Available exclusively on Tokopedia.
                 </p>
                 <div className="mt-8 flex flex-col sm:flex-row gap-4">
                   <Button

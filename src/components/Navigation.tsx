@@ -3,7 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import PacceLogo from "./PacceLogo";
 
 const navLinks = [
   { href: "/shop", label: "Shop" },
@@ -47,9 +48,9 @@ export default function Navigation() {
             {/* Logo */}
             <Link
               href="/"
-              className="font-heading text-2xl md:text-3xl font-black tracking-wider text-foreground hover:text-primary-accent transition-colors"
+              className="text-foreground hover:text-primary-accent transition-colors"
             >
-              PACCE
+              <PacceLogo className="h-6 md:h-8 w-auto" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -68,22 +69,6 @@ export default function Navigation() {
 
             {/* Right Section */}
             <div className="flex items-center gap-4">
-              <button
-                aria-label="Search"
-                className="p-2 text-foreground hover:text-primary-accent transition-colors"
-              >
-                <Search size={20} />
-              </button>
-
-              <a
-                href="https://www.tokopedia.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hidden md:flex btn-tokopedia px-4 py-2 text-sm font-medium tracking-wide"
-              >
-                Buy on Tokopedia
-              </a>
-
               {/* Mobile Menu Button */}
               <button
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -123,24 +108,12 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="font-heading text-3xl tracking-wider text-foreground hover:text-primary-accent transition-colors"
+                    className="text-3xl font-bold tracking-wider text-foreground hover:text-primary-accent transition-colors"
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
-
-              <motion.a
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4 }}
-                href="https://www.tokopedia.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-tokopedia px-8 py-3 text-lg font-medium tracking-wide mt-4"
-              >
-                Buy on Tokopedia
-              </motion.a>
             </motion.nav>
           </motion.div>
         )}

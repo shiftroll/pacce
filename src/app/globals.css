@@ -8,7 +8,6 @@
   --primary-accent: #DFFF00;
   --secondary-accent: #333333;
   --tokopedia-green: #42B549;
-  --font-oswald: 'Oswald', 'Arial Narrow', 'Helvetica Neue Condensed', sans-serif;
   --font-inter: 'Inter', var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -28,10 +27,10 @@ body {
 
 /* Uppercase bold headers */
 h1, h2, h3 {
-  font-family: var(--font-oswald);
+  font-family: var(--font-inter);
   text-transform: uppercase;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.02em;
 }
 
 /* Custom scrollbar for dark theme */
@@ -111,11 +110,13 @@ h1, h2, h3 {
 
   /* Font classes */
   .font-heading {
-    font-family: var(--font-oswald);
+    font-family: var(--font-inter);
+    font-weight: 700;
   }
 
   .font-body {
     font-family: var(--font-inter);
+    font-weight: 400;
   }
 }
 

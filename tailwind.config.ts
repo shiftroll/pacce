@@ -18,8 +18,8 @@ const config: Config = {
         "medium-grey": "#2A2A2A",
       },
       fontFamily: {
-        heading: ["var(--font-oswald)", "sans-serif"],
-        body: ["var(--font-inter)", "sans-serif"],
+        heading: ["var(--font-inter)", "Inter", "sans-serif"],
+        body: ["var(--font-inter)", "Inter", "sans-serif"],
       },
       letterSpacing: {
         wider: "0.1em",
