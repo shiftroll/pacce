@@ -221,14 +221,14 @@ export default function Home() {
       </section>
 
       {/* Why PACCE Section */}
-      <section className="py-20 md:py-32 bg-tokopedia-green">
+      <section className="py-20 md:py-32 bg-primary-accent">
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-white/80 text-base md:text-lg tracking-widest font-medium">
+              <span className="text-background/70 text-base md:text-lg tracking-widest font-medium">
                 THE SCIENCE
               </span>
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-white mt-4">
+              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-background mt-4">
                 ENGINEERED FOR PERFORMANCE
               </h2>
             </div>
@@ -259,19 +259,19 @@ export default function Home() {
               },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 0.15}>
-                <div className="bg-white/10 p-8 group hover:bg-white/20 border border-white/20 transition-colors">
-                  <div className="w-16 h-16 flex items-center justify-center border border-white mb-6">
-                    <span className="font-heading text-2xl text-white">
+                <div className="bg-background/10 p-8 group hover:bg-background/20 border border-background/20 transition-colors">
+                  <div className="w-16 h-16 flex items-center justify-center border border-background mb-6">
+                    <span className="font-heading text-2xl text-background">
                       {item.icon}
                     </span>
                   </div>
-                  <h3 className="font-heading text-2xl tracking-wide text-white mb-2">
+                  <h3 className="font-heading text-2xl tracking-wide text-background mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-white text-3xl font-bold mb-4">
+                  <p className="text-background text-3xl font-bold mb-4">
                     {item.value}
                   </p>
-                  <p className="text-white/80 text-base tracking-wide leading-relaxed">
+                  <p className="text-background/80 text-base tracking-wide leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -281,7 +281,7 @@ export default function Home() {
 
           <ScrollReveal delay={0.4}>
             <div className="text-center mt-12">
-              <Button href="/science" variant="ghost" className="border-white text-white hover:bg-white hover:text-tokopedia-green">
+              <Button href="/science" variant="ghost" className="border-background text-background hover:bg-background hover:text-primary-accent">
                 EXPLORE THE SCIENCE
                 <ArrowRight className="ml-2" size={18} />
               </Button>
