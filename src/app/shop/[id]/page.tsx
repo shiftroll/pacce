@@ -7,7 +7,6 @@ import { motion } from "framer-motion";
 import { Minus, Plus, Check, Truck, Shield } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProductCard from "@/components/ProductCard";
-import TrackedBuyButton from "@/components/TrackedBuyButton";
 
 // Mock product data - in real app this would come from API/CMS
 const productsData: Record<string, {
@@ -250,21 +249,6 @@ export default function ProductPage() {
                     <Plus size={18} />
                   </button>
                 </div>
-              </div>
-
-              {/* Purchase Button */}
-              <div className="space-y-3">
-                <TrackedBuyButton
-                  productId={product.id}
-                  productName={product.name}
-                  productSlug={product.id}
-                  variant="tokopedia"
-                  size="lg"
-                  className="w-full"
-                />
-                <p className="text-xs text-gray-500 tracking-wide text-center">
-                  Transaction handled securely via Tokopedia
-                </p>
               </div>
 
               {/* Trust Badges */}
