@@ -1,43 +1,38 @@
 export default function PacceLogo({ className = "" }: { className?: string }) {
   return (
     <svg
-      viewBox="0 0 140 32"
+      viewBox="0 0 100 24"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
       className={className}
     >
       {/* P */}
       <path
-        d="M0 0H8V14H14C18.4183 14 22 10.4183 22 6C22 2.68629 19.3137 0 16 0H8H0V24H8V14"
+        d="M0 0H6V24H0V0ZM6 0H12C14.2091 0 16 1.79086 16 4V8C16 10.2091 14.2091 12 12 12H6V0Z"
         fill="currentColor"
       />
-      <path
-        d="M8 0V6H14C14 3.79086 12.2091 0 10 0H8Z"
-        fill="currentColor"
-      />
-      <rect x="8" y="3" width="6" height="8" rx="1" fill="currentColor" />
 
       {/* A */}
       <path
-        d="M32 24L38 0H46L52 24H44L43 20H37L36 24H32ZM38 16H42L40 6L38 16Z"
+        d="M19 24L25 0H29L35 24H29.5L28.5 20H25.5L24.5 24H19ZM26 16H28L27 8L26 16Z"
         fill="currentColor"
       />
 
       {/* C */}
       <path
-        d="M58 12C58 5.37258 63.3726 0 70 0H76V6H70C66.6863 6 64 8.68629 64 12C64 15.3137 66.6863 18 70 18H76V24H70C63.3726 24 58 18.6274 58 12Z"
+        d="M38 12C38 5.37258 42.4772 0 48 0H52V5H48C45.2386 5 43 8.13401 43 12C43 15.866 45.2386 19 48 19H52V24H48C42.4772 24 38 18.6274 38 12Z"
         fill="currentColor"
       />
 
       {/* C */}
       <path
-        d="M82 12C82 5.37258 87.3726 0 94 0H100V6H94C90.6863 6 88 8.68629 88 12C88 15.3137 90.6863 18 94 18H100V24H94C87.3726 24 82 18.6274 82 12Z"
+        d="M55 12C55 5.37258 59.4772 0 65 0H69V5H65C62.2386 5 60 8.13401 60 12C60 15.866 62.2386 19 65 19H69V24H65C59.4772 24 55 18.6274 55 12Z"
         fill="currentColor"
       />
 
       {/* E */}
       <path
-        d="M106 0H124V6H112V9H122V15H112V18H124V24H106V0Z"
+        d="M72 0H88V5H78V9.5H86V14.5H78V19H88V24H72V0Z"
         fill="currentColor"
       />
     </svg>
