@@ -5,7 +5,7 @@ import Link from "next/link";
 
 interface ButtonProps {
   children: React.ReactNode;
-  variant?: "ghost" | "primary" | "tokopedia";
+  variant?: "ghost" | "primary";
   size?: "sm" | "md" | "lg";
   href?: string;
   external?: boolean;
@@ -31,9 +31,7 @@ export default function Button({
     ghost:
       "border border-foreground bg-transparent text-foreground hover:bg-foreground hover:text-background",
     primary:
-      "bg-primary-accent text-background hover:bg-opacity-90",
-    tokopedia:
-      "border border-tokopedia-green text-tokopedia-green bg-transparent hover:bg-tokopedia-green hover:text-white",
+      "bg-foreground text-background hover:bg-dark-grey",
   };
 
   const sizes = {
