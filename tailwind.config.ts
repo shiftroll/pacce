@@ -9,17 +9,17 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#0A0A0A",
-        foreground: "#F5F5F5",
-        "primary-accent": "#DFFF00",
-        "secondary-accent": "#333333",
-        "tokopedia-green": "#42B549",
-        "dark-grey": "#1A1A1A",
-        "medium-grey": "#2A2A2A",
+        background: "#FFFFFF",
+        foreground: "#0A0A0A",
+        secondary: "#F5F5F5",
+        muted: "#E5E5E5",
+        "dark-grey": "#333333",
+        "medium-grey": "#666666",
       },
       fontFamily: {
-        heading: ["var(--font-inter)", "Inter", "sans-serif"],
-        body: ["var(--font-inter)", "Inter", "sans-serif"],
+        heading: ["Archivo Black", "sans-serif"],
+        category: ["Poppins", "sans-serif"],
+        body: ["Source Sans 3", "sans-serif"],
       },
       letterSpacing: {
         wider: "0.1em",

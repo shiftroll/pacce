@@ -1,72 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import ProductCard from "@/components/ProductCard";
 import Button from "@/components/Button";
-
-const products = [
-  {
-    id: "electrolyte-original",
-    name: "Electrolyte Mix Original",
-    price: "Rp 185.000",
-    image: "https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&q=80",
-    category: "HYDRATION",
-  },
-  {
-    id: "electrolyte-citrus",
-    name: "Electrolyte Mix Citrus",
-    price: "Rp 185.000",
-    image: "https://images.unsplash.com/photo-1571008887538-b36bb32f4571?w=800&q=80",
-    category: "HYDRATION",
-  },
-  {
-    id: "recovery-blend",
-    name: "Recovery Blend Pro",
-    price: "Rp 245.000",
-    image: "https://images.unsplash.com/photo-1594882645126-14020914d58d?w=800&q=80",
-    category: "RECOVERY",
-  },
-  {
-    id: "hydration-pack",
-    name: "Complete Hydration Pack",
-    price: "Rp 495.000",
-    image: "https://images.unsplash.com/photo-1461896836934-afa09fc6c0f0?w=800&q=80",
-    category: "BUNDLE",
-  },
-  {
-    id: "pre-workout",
-    name: "Pre-Workout Formula",
-    price: "Rp 225.000",
-    image: "https://images.unsplash.com/photo-1486218119243-13883505764c?w=800&q=80",
-    category: "PERFORMANCE",
-  },
-  {
-    id: "endurance-mix",
-    name: "Endurance Mix",
-    price: "Rp 195.000",
-    image: "https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80",
-    category: "HYDRATION",
-  },
-];
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
-  },
-};
-
-const staggerItem = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0 },
-};
 
 export default function Home() {
   return (
@@ -101,14 +39,14 @@ export default function Home() {
           >
             HYDRATION.
             <br />
-            <span className="text-primary-accent">WITHOUT COMPROMISE.</span>
+            WITHOUT COMPROMISE.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="mt-6 text-xl md:text-2xl text-gray-300 tracking-wide max-w-2xl mx-auto"
+            className="mt-6 text-xl md:text-2xl text-dark-grey tracking-wide max-w-2xl mx-auto"
           >
             Engineered with precision. Formulated with science. Built for athletes
             who refuse to settle.
@@ -120,10 +58,10 @@ export default function Home() {
             transition={{ duration: 0.8, delay: 0.6 }}
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button href="/shop" variant="ghost" size="lg">
-              SHOP NOW
+            <Button href="/waitlist" variant="primary" size="lg">
+              JOIN WAITLIST
             </Button>
-            <Button href="/science" variant="primary" size="lg">
+            <Button href="/science" variant="ghost" size="lg">
               THE SCIENCE
             </Button>
           </motion.div>
@@ -157,7 +95,7 @@ export default function Home() {
             {/* Text Content */}
             <div className="space-y-6">
               <ScrollReveal direction="left">
-                <span className="text-primary-accent text-base md:text-lg tracking-widest font-medium">
+                <span className="text-dark-grey text-base md:text-lg tracking-widest font-medium">
                   UPCOMING EVENT
                 </span>
               </ScrollReveal>
@@ -171,7 +109,7 @@ export default function Home() {
               </ScrollReveal>
 
               <ScrollReveal direction="left" delay={0.2}>
-                <p className="text-gray-400 text-lg tracking-wide leading-relaxed">
+                <p className="text-medium-grey text-lg tracking-wide leading-relaxed">
                   The ultimate test of endurance. Run until you can&apos;t. The last
                   runner standing claims victory. No pace. No mercy. Just pure
                   athletic determination.
@@ -184,12 +122,8 @@ export default function Home() {
                     LEARN MORE
                     <ArrowRight className="ml-2" size={18} />
                   </Button>
-                  <Button
-                    href="https://www.eventbrite.com"
-                    external
-                    variant="primary"
-                  >
-                    REGISTER NOW
+                  <Button href="/waitlist" variant="primary">
+                    JOIN WAITLIST
                   </Button>
                 </div>
               </ScrollReveal>
@@ -205,13 +139,12 @@ export default function Home() {
                   className="object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 border border-primary-accent/20" />
                 <div className="absolute bottom-4 left-4 right-4 bg-background/90 backdrop-blur-sm p-4">
-                  <p className="text-sm tracking-wider text-gray-400">
+                  <p className="text-sm tracking-wider text-medium-grey">
                     NEXT EVENT
                   </p>
                   <p className="font-heading text-xl tracking-wide text-foreground">
-                    MARCH 15, 2026 • JAKARTA
+                    MARCH 15, 2026 &bull; JAKARTA
                   </p>
                 </div>
               </div>
@@ -221,14 +154,14 @@ export default function Home() {
       </section>
 
       {/* Why PACCE Section */}
-      <section className="py-20 md:py-32 bg-primary-accent">
+      <section className="py-20 md:py-32 bg-secondary">
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-background/70 text-base md:text-lg tracking-widest font-medium">
+              <span className="text-dark-grey text-base md:text-lg tracking-widest font-medium">
                 THE SCIENCE
               </span>
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-background mt-4">
+              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
                 ENGINEERED FOR PERFORMANCE
               </h2>
             </div>
@@ -259,19 +192,19 @@ export default function Home() {
               },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 0.15}>
-                <div className="bg-background/10 p-8 group hover:bg-background/20 border border-background/20 transition-colors">
-                  <div className="w-16 h-16 flex items-center justify-center border border-background mb-6">
-                    <span className="font-heading text-2xl text-background">
+                <div className="bg-background p-8 group hover:shadow-lg border border-muted transition-all">
+                  <div className="w-16 h-16 flex items-center justify-center border border-foreground mb-6">
+                    <span className="font-heading text-2xl text-foreground">
                       {item.icon}
                     </span>
                   </div>
-                  <h3 className="font-heading text-2xl tracking-wide text-background mb-2">
+                  <h3 className="font-heading text-2xl tracking-wide text-foreground mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-background text-3xl font-bold mb-4">
+                  <p className="text-foreground text-3xl font-bold mb-4">
                     {item.value}
                   </p>
-                  <p className="text-background/80 text-base tracking-wide leading-relaxed">
+                  <p className="text-medium-grey text-base tracking-wide leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -281,7 +214,7 @@ export default function Home() {
 
           <ScrollReveal delay={0.4}>
             <div className="text-center mt-12">
-              <Button href="/science" variant="ghost" className="border-background text-background hover:bg-background hover:text-primary-accent">
+              <Button href="/science" variant="ghost">
                 EXPLORE THE SCIENCE
                 <ArrowRight className="ml-2" size={18} />
               </Button>
@@ -290,47 +223,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Product Showcase - Bento Grid */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="section-container">
-          <ScrollReveal>
-            <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-12">
-              <div>
-                <span className="text-primary-accent text-base md:text-lg tracking-widest font-medium">
-                  SHOP
-                </span>
-                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
-                  OUR PRODUCTS
-                </h2>
-              </div>
-              <Link
-                href="/shop"
-                className="mt-4 md:mt-0 text-foreground hover:text-primary-accent transition-colors flex items-center gap-2 text-sm tracking-wider"
-              >
-                VIEW ALL
-                <ArrowRight size={16} />
-              </Link>
-            </div>
-          </ScrollReveal>
-
-          <motion.div
-            variants={staggerContainer}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true }}
-            className="bento-grid"
-          >
-            {products.map((product) => (
-              <motion.div key={product.id} variants={staggerItem}>
-                <ProductCard {...product} />
-              </motion.div>
-            ))}
-          </motion.div>
-        </div>
-      </section>
-
       {/* Testimonial / Social Proof Section */}
-      <section className="py-20 md:py-32 bg-dark-grey border-y border-secondary-accent">
+      <section className="py-20 md:py-32 bg-background border-y border-muted">
         <div className="section-container">
           <ScrollReveal>
             <div className="max-w-4xl mx-auto text-center">
@@ -338,7 +232,7 @@ export default function Home() {
                 {[...Array(5)].map((_, i) => (
                   <svg
                     key={i}
-                    className="w-6 h-6 text-primary-accent"
+                    className="w-6 h-6 text-foreground"
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -354,7 +248,7 @@ export default function Home() {
                 <p className="text-foreground font-medium tracking-wider">
                   ANDI PRATAMA
                 </p>
-                <p className="text-gray-500 text-sm tracking-wider">
+                <p className="text-medium-grey text-sm tracking-wider">
                   PROFESSIONAL ULTRAMARATHON RUNNER
                 </p>
               </div>
@@ -367,36 +261,26 @@ export default function Home() {
       <section className="py-20 md:py-32 bg-background">
         <div className="section-container">
           <ScrollReveal>
-            <div className="relative overflow-hidden bg-secondary-accent p-8 md:p-16">
+            <div className="relative overflow-hidden bg-foreground p-8 md:p-16">
               <div className="relative z-10 max-w-2xl">
-                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground">
+                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-background">
                   READY TO ELEVATE YOUR PERFORMANCE?
                 </h2>
-                <p className="mt-6 text-gray-400 text-lg tracking-wide">
-                  Join thousands of athletes who trust PACCE for their hydration
-                  needs. Available exclusively on Tokopedia.
+                <p className="mt-6 text-background/70 text-lg tracking-wide">
+                  Be the first to know when Last Man Standing registration opens.
+                  Limited to 200 runners.
                 </p>
-                <div className="mt-8 flex flex-col sm:flex-row gap-4">
+                <div className="mt-8">
                   <Button
-                    href="https://www.tokopedia.com"
-                    external
-                    variant="tokopedia"
+                    href="/waitlist"
+                    variant="ghost"
                     size="lg"
+                    className="border-background text-background hover:bg-background hover:text-foreground"
                   >
-                    SHOP ON TOKOPEDIA
-                  </Button>
-                  <Button href="/shop" variant="ghost" size="lg">
-                    BROWSE PRODUCTS
+                    JOIN WAITLIST
                   </Button>
                 </div>
               </div>
-
-              {/* Decorative Elements */}
-              <div className="absolute top-0 right-0 w-1/3 h-full opacity-10">
-                <div className="absolute top-0 right-0 w-full h-full bg-gradient-to-l from-primary-accent to-transparent" />
-              </div>
-              <div className="absolute -bottom-20 -right-20 w-64 h-64 border border-primary-accent/20 rounded-full" />
-              <div className="absolute -bottom-10 -right-10 w-48 h-48 border border-primary-accent/10 rounded-full" />
             </div>
           </ScrollReveal>
         </div>

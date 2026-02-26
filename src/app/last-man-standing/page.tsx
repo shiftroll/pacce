@@ -66,7 +66,7 @@ export default function LastManStandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-primary-accent text-sm tracking-widest font-medium"
+            className="text-dark-grey text-sm tracking-widest font-medium"
           >
             PACCE PRESENTS
           </motion.span>
@@ -86,7 +86,7 @@ export default function LastManStandingPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-6 text-lg md:text-xl text-gray-300 tracking-wide max-w-2xl mx-auto"
+            className="mt-6 text-lg md:text-xl text-dark-grey tracking-wide max-w-2xl mx-auto"
           >
             The ultimate test of endurance. Run until you can&apos;t. The last
             runner standing claims victory.
@@ -98,13 +98,8 @@ export default function LastManStandingPage() {
             transition={{ duration: 0.8, delay: 0.5 }}
             className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
           >
-            <Button
-              href="https://www.eventbrite.com"
-              external
-              variant="primary"
-              size="lg"
-            >
-              REGISTER NOW
+            <Button href="/waitlist" variant="primary" size="lg">
+              JOIN WAITLIST
             </Button>
             <Button href="#concept" variant="ghost" size="lg">
               LEARN MORE
@@ -114,7 +109,7 @@ export default function LastManStandingPage() {
       </section>
 
       {/* Event Details Bar */}
-      <section className="bg-primary-accent py-4">
+      <section className="bg-foreground py-4">
         <div className="section-container">
           <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-background">
             <div className="flex items-center gap-2">
@@ -149,14 +144,13 @@ export default function LastManStandingPage() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
-                <div className="absolute inset-0 border border-primary-accent/20" />
               </div>
             </ScrollReveal>
 
             {/* Text Content */}
             <div className="space-y-6">
               <ScrollReveal direction="right">
-                <span className="text-primary-accent text-sm tracking-widest font-medium">
+                <span className="text-dark-grey text-sm tracking-widest font-medium">
                   THE CONCEPT
                 </span>
               </ScrollReveal>
@@ -168,7 +162,7 @@ export default function LastManStandingPage() {
               </ScrollReveal>
 
               <ScrollReveal direction="right" delay={0.2}>
-                <p className="text-gray-400 text-lg tracking-wide leading-relaxed">
+                <p className="text-medium-grey text-lg tracking-wide leading-relaxed">
                   Inspired by the legendary Big Dog&apos;s Backyard Ultra, Last Man
                   Standing strips running to its purest form. No GPS watches
                   matter. No splits to chase. Just you, the track, and the clock.
@@ -176,7 +170,7 @@ export default function LastManStandingPage() {
               </ScrollReveal>
 
               <ScrollReveal direction="right" delay={0.3}>
-                <p className="text-gray-400 text-lg tracking-wide leading-relaxed">
+                <p className="text-medium-grey text-lg tracking-wide leading-relaxed">
                   Every few minutes, a horn sounds. You must be at the start line
                   ready for the next lap. Miss it, and you&apos;re out. Simple rules.
                   Brutal execution. Legendary results.
@@ -196,11 +190,11 @@ export default function LastManStandingPage() {
       </section>
 
       {/* Rules Section */}
-      <section className="py-20 md:py-32 bg-dark-grey">
+      <section className="py-20 md:py-32 bg-secondary">
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-primary-accent text-sm tracking-widest font-medium">
+              <span className="text-dark-grey text-sm tracking-widest font-medium">
                 HOW IT WORKS
               </span>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
@@ -232,13 +226,13 @@ export default function LastManStandingPage() {
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 0.15}>
                 <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto flex items-center justify-center border border-primary-accent mb-6">
-                    <item.icon className="w-10 h-10 text-primary-accent" />
+                  <div className="w-20 h-20 mx-auto flex items-center justify-center border border-foreground mb-6">
+                    <item.icon className="w-10 h-10 text-foreground" />
                   </div>
                   <h3 className="font-heading text-2xl tracking-wide text-foreground mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 tracking-wide leading-relaxed">
+                  <p className="text-medium-grey tracking-wide leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -253,7 +247,7 @@ export default function LastManStandingPage() {
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-primary-accent text-sm tracking-widest font-medium">
+              <span className="text-dark-grey text-sm tracking-widest font-medium">
                 REGISTRATION INCLUDES
               </span>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
@@ -286,12 +280,12 @@ export default function LastManStandingPage() {
               },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 0.1}>
-                <div className="bg-secondary-accent p-6 border border-transparent hover:border-primary-accent transition-colors">
-                  <item.icon className="w-8 h-8 text-primary-accent mb-4" />
+                <div className="bg-secondary p-6 border border-muted hover:border-foreground transition-colors">
+                  <item.icon className="w-8 h-8 text-foreground mb-4" />
                   <h3 className="font-heading text-lg tracking-wide text-foreground mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-gray-400 text-sm tracking-wide">
+                  <p className="text-medium-grey text-sm tracking-wide">
                     {item.description}
                   </p>
                 </div>
@@ -302,11 +296,11 @@ export default function LastManStandingPage() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-20 md:py-32 bg-dark-grey">
+      <section id="faq" className="py-20 md:py-32 bg-secondary">
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-primary-accent text-sm tracking-widest font-medium">
+              <span className="text-dark-grey text-sm tracking-widest font-medium">
                 GOT QUESTIONS?
               </span>
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
@@ -331,22 +325,17 @@ export default function LastManStandingPage() {
               <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground">
                 ARE YOU READY TO BE THE LAST ONE STANDING?
               </h2>
-              <p className="mt-6 text-gray-400 text-lg tracking-wide">
+              <p className="mt-6 text-medium-grey text-lg tracking-wide">
                 Registration closes when we hit 200 runners or 7 days before the
                 event—whichever comes first. Don&apos;t wait.
               </p>
               <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <Button
-                  href="https://www.eventbrite.com"
-                  external
-                  variant="primary"
-                  size="lg"
-                >
-                  REGISTER ON EVENTBRITE
+                <Button href="/waitlist" variant="primary" size="lg">
+                  JOIN WAITLIST
                 </Button>
               </div>
-              <p className="mt-4 text-gray-500 text-sm tracking-wide">
-                Early Bird: Rp 350.000 • Regular: Rp 450.000
+              <p className="mt-4 text-medium-grey text-sm tracking-wide">
+                Early Bird: Rp 350.000 &bull; Regular: Rp 450.000
               </p>
             </div>
           </ScrollReveal>
@@ -354,15 +343,14 @@ export default function LastManStandingPage() {
       </section>
 
       {/* Mobile Floating Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-background/95 backdrop-blur-md border-t border-secondary-accent md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-background/95 backdrop-blur-md border-t border-muted md:hidden">
         <Button
-          href="https://www.eventbrite.com"
-          external
+          href="/waitlist"
           variant="primary"
           size="lg"
           className="w-full"
         >
-          REGISTER ON EVENTBRITE
+          JOIN WAITLIST
         </Button>
       </div>
     </>

@@ -6,6 +6,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight, Beaker, Activity, Zap, Brain } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import Button from "@/components/Button";
 
 const categories = ["All", "Hydration", "Recovery", "Nutrition"];
 
@@ -121,13 +122,13 @@ export default function SciencePage() {
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center max-w-4xl mx-auto">
-              <span className="text-primary-accent text-sm tracking-widest font-medium">
+              <span className="text-dark-grey text-sm tracking-widest font-medium">
                 THE SCIENCE
               </span>
               <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-foreground mt-4">
                 EVIDENCE-BASED HYDRATION
               </h1>
-              <p className="mt-6 text-gray-400 text-lg tracking-wide leading-relaxed">
+              <p className="mt-6 text-medium-grey text-lg tracking-wide leading-relaxed">
                 We don&apos;t just make claims—we back everything with peer-reviewed
                 research. Explore the science behind PACCE and learn how to
                 optimize your performance.
@@ -138,17 +139,17 @@ export default function SciencePage() {
       </section>
 
       {/* Stats Section */}
-      <section className="py-12 bg-dark-grey border-y border-secondary-accent">
+      <section className="py-12 bg-secondary border-y border-muted">
         <div className="section-container">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {scienceStats.map((stat, index) => (
               <ScrollReveal key={stat.label} delay={index * 0.1}>
                 <div className="text-center">
-                  <stat.icon className="w-8 h-8 text-primary-accent mx-auto mb-3" />
+                  <stat.icon className="w-8 h-8 text-foreground mx-auto mb-3" />
                   <p className="font-heading text-3xl md:text-4xl text-foreground font-bold">
                     {stat.value}
                   </p>
-                  <p className="text-gray-400 text-sm tracking-wider mt-1">
+                  <p className="text-medium-grey text-sm tracking-wider mt-1">
                     {stat.label}
                   </p>
                 </div>
@@ -163,7 +164,7 @@ export default function SciencePage() {
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <span className="text-primary-accent text-sm tracking-widest font-medium">
+              <span className="text-dark-grey text-sm tracking-widest font-medium">
                 THE FORMULA
               </span>
               <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-wide text-foreground mt-4">
@@ -197,19 +198,19 @@ export default function SciencePage() {
               },
             ].map((item, index) => (
               <ScrollReveal key={item.title} delay={index * 0.15}>
-                <div className="bg-secondary-accent p-8 h-full">
-                  <div className="w-16 h-16 flex items-center justify-center border border-primary-accent mb-6">
-                    <span className="font-heading text-2xl text-primary-accent">
+                <div className="bg-secondary p-8 h-full border border-muted">
+                  <div className="w-16 h-16 flex items-center justify-center border border-foreground mb-6">
+                    <span className="font-heading text-2xl text-foreground">
                       {item.icon}
                     </span>
                   </div>
                   <h3 className="font-heading text-2xl tracking-wide text-foreground mb-2">
                     {item.title}
                   </h3>
-                  <p className="text-primary-accent text-3xl font-bold mb-4">
+                  <p className="text-foreground text-3xl font-bold mb-4">
                     {item.value}
                   </p>
-                  <p className="text-gray-400 text-sm tracking-wide leading-relaxed">
+                  <p className="text-medium-grey text-sm tracking-wide leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -218,7 +219,7 @@ export default function SciencePage() {
           </div>
 
           <ScrollReveal delay={0.4}>
-            <div className="bg-dark-grey p-8 md:p-12">
+            <div className="bg-secondary p-8 md:p-12 border border-muted">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                 <div>
                   <h3 className="font-heading text-2xl tracking-wide text-foreground mb-4">
@@ -233,8 +234,8 @@ export default function SciencePage() {
                       "Vegan and gluten-free",
                     ].map((item, index) => (
                       <li key={index} className="flex items-center gap-3">
-                        <div className="w-2 h-2 bg-primary-accent" />
-                        <span className="text-gray-300 tracking-wide">{item}</span>
+                        <div className="w-2 h-2 bg-foreground" />
+                        <span className="text-dark-grey tracking-wide">{item}</span>
                       </li>
                     ))}
                   </ul>
@@ -255,11 +256,11 @@ export default function SciencePage() {
       </section>
 
       {/* Articles Section */}
-      <section className="py-20 md:py-32 bg-dark-grey">
+      <section className="py-20 md:py-32 bg-secondary">
         <div className="section-container">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <span className="text-primary-accent text-sm tracking-widest font-medium">
+              <span className="text-dark-grey text-sm tracking-widest font-medium">
                 KNOWLEDGE HUB
               </span>
               <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-wide text-foreground mt-4">
@@ -277,8 +278,8 @@ export default function SciencePage() {
                   onClick={() => setActiveCategory(category)}
                   className={`px-6 py-2 text-sm font-medium tracking-wider whitespace-nowrap transition-all ${
                     activeCategory === category
-                      ? "bg-primary-accent text-background"
-                      : "bg-secondary-accent text-foreground hover:bg-medium-grey"
+                      ? "bg-foreground text-background"
+                      : "bg-background text-foreground border border-muted hover:border-foreground"
                   }`}
                 >
                   {category.toUpperCase()}
@@ -298,7 +299,7 @@ export default function SciencePage() {
             {filteredArticles.map((article) => (
               <motion.div key={article.id} variants={staggerItem}>
                 <Link href={`/science/${article.id}`} className="group block">
-                  <article className="bg-secondary-accent overflow-hidden h-full flex flex-col">
+                  <article className="bg-background overflow-hidden h-full flex flex-col border border-muted">
                     {/* Image */}
                     <div className="relative aspect-video overflow-hidden">
                       <Image
@@ -312,20 +313,20 @@ export default function SciencePage() {
 
                     {/* Content */}
                     <div className="p-6 flex flex-col flex-grow">
-                      <span className="text-primary-accent text-xs tracking-widest font-medium">
+                      <span className="text-dark-grey text-xs tracking-widest font-medium">
                         {article.category.toUpperCase()}
                       </span>
-                      <h3 className="font-heading text-xl tracking-wide text-foreground mt-2 group-hover:text-primary-accent transition-colors">
+                      <h3 className="font-heading text-xl tracking-wide text-foreground mt-2 group-hover:text-dark-grey transition-colors">
                         {article.title}
                       </h3>
-                      <p className="text-gray-400 text-sm tracking-wide mt-3 flex-grow">
+                      <p className="text-medium-grey text-sm tracking-wide mt-3 flex-grow">
                         {article.excerpt}
                       </p>
-                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-background/20">
-                        <span className="text-gray-500 text-xs tracking-wider">
+                      <div className="flex items-center justify-between mt-4 pt-4 border-t border-muted">
+                        <span className="text-medium-grey text-xs tracking-wider">
                           {article.readTime}
                         </span>
-                        <span className="text-primary-accent text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
+                        <span className="text-foreground text-sm flex items-center gap-1 group-hover:gap-2 transition-all">
                           READ MORE
                           <ArrowRight size={14} />
                         </span>
@@ -339,7 +340,7 @@ export default function SciencePage() {
 
           {filteredArticles.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-400 text-lg">
+              <p className="text-medium-grey text-lg">
                 No articles found in this category.
               </p>
             </div>
@@ -355,25 +356,14 @@ export default function SciencePage() {
               <h2 className="font-heading text-3xl md:text-4xl font-bold tracking-wide text-foreground">
                 READY TO EXPERIENCE THE DIFFERENCE?
               </h2>
-              <p className="mt-6 text-gray-400 text-lg tracking-wide">
-                Join thousands of athletes who trust PACCE for their hydration needs.
-                Science-backed, athlete-approved.
+              <p className="mt-6 text-medium-grey text-lg tracking-wide">
+                Join the waitlist for Last Man Standing and be part of the
+                ultimate endurance event.
               </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <Link
-                  href="/shop"
-                  className="btn-primary px-8 py-4 text-base font-medium tracking-wider"
-                >
-                  SHOP NOW
-                </Link>
-                <a
-                  href="https://www.tokopedia.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-tokopedia px-8 py-4 text-base font-medium tracking-wider"
-                >
-                  BUY ON TOKOPEDIA
-                </a>
+              <div className="mt-10">
+                <Button href="/waitlist" variant="primary" size="lg">
+                  JOIN WAITLIST
+                </Button>
               </div>
             </div>
           </ScrollReveal>

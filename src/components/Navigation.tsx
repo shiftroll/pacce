@@ -7,9 +7,8 @@ import { Menu, X } from "lucide-react";
 import PacceLogo from "./PacceLogo";
 
 const navLinks = [
-  { href: "/shop", label: "Shop" },
-  { href: "/science", label: "Science" },
   { href: "/last-man-standing", label: "Last Man Standing" },
+  { href: "/science", label: "Science" },
 ];
 
 export default function Navigation() {
@@ -40,7 +39,7 @@ export default function Navigation() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "nav-blur border-b border-secondary-accent" : "bg-transparent"
+          isScrolled ? "nav-blur border-b border-muted" : "bg-transparent"
         }`}
       >
         <nav className="section-container">
@@ -48,7 +47,7 @@ export default function Navigation() {
             {/* Logo */}
             <Link
               href="/"
-              className="text-foreground hover:text-primary-accent transition-colors"
+              className="text-foreground hover:opacity-70 transition-opacity"
             >
               <PacceLogo className="h-6 md:h-8 w-auto" />
             </Link>
@@ -59,10 +58,10 @@ export default function Navigation() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="relative font-body text-sm tracking-wider text-foreground hover:text-foreground transition-colors group"
+                  className="relative font-body text-sm tracking-wider text-dark-grey hover:text-foreground transition-colors group"
                 >
                   {link.label}
-                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-primary-accent transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-foreground transition-all duration-300 group-hover:w-full" />
                 </Link>
               ))}
             </div>
@@ -73,7 +72,7 @@ export default function Navigation() {
               <button
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
                 onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                className="md:hidden p-2 text-foreground hover:text-primary-accent transition-colors"
+                className="md:hidden p-2 text-foreground hover:opacity-70 transition-opacity"
               >
                 {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
               </button>
@@ -108,7 +107,7 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-3xl font-bold tracking-wider text-foreground hover:text-primary-accent transition-colors"
+                    className="text-3xl font-bold tracking-wider text-foreground hover:text-dark-grey transition-colors"
                   >
                     {link.label}
                   </Link>

@@ -3,12 +3,10 @@
 @tailwind utilities;
 
 :root {
-  --background: #0A0A0A;
-  --foreground: #F5F5F5;
-  --primary-accent: #DFFF00;
-  --secondary-accent: #333333;
-  --tokopedia-green: #42B549;
-  --font-inter: 'Inter', var(--font-geist-sans), -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --background: #FFFFFF;
+  --foreground: #0A0A0A;
+  --secondary: #F5F5F5;
+  --muted: #E5E5E5;
 }
 
 * {
@@ -22,39 +20,46 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: var(--font-inter);
+  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Uppercase bold headers */
-h1, h2, h3 {
-  font-family: var(--font-inter);
+h1, h2 {
+  font-family: 'Archivo Black', sans-serif;
   text-transform: uppercase;
-  font-weight: 700;
+  font-weight: 400;
   letter-spacing: 0.02em;
 }
 
-/* Custom scrollbar for dark theme */
+h3 {
+  font-family: 'Poppins', sans-serif;
+  text-transform: uppercase;
+  font-weight: 900;
+  letter-spacing: 0.02em;
+}
+
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #0A0A0A;
+  background: #F5F5F5;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333333;
+  background: #CCCCCC;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #444444;
+  background: #AAAAAA;
 }
 
 /* Selection color */
 ::selection {
-  background: rgba(223, 255, 0, 0.3);
-  color: #F5F5F5;
+  background: rgba(10, 10, 10, 0.15);
+  color: #0A0A0A;
 }
 
 /* Hide scrollbar for filter tabs */
@@ -69,7 +74,7 @@ h1, h2, h3 {
 @layer base {
   /* Focus styles for accessibility */
   :focus-visible {
-    outline: 2px solid var(--primary-accent);
+    outline: 2px solid var(--foreground);
     outline-offset: 2px;
   }
 }
@@ -81,21 +86,15 @@ h1, h2, h3 {
            hover:bg-foreground hover:text-background transition-all duration-300;
   }
 
-  /* Primary accent button */
+  /* Primary button */
   .btn-primary {
-    @apply bg-primary-accent text-background font-semibold
+    @apply bg-foreground text-background font-semibold
            hover:bg-opacity-90 transition-all duration-300;
-  }
-
-  /* Tokopedia button */
-  .btn-tokopedia {
-    @apply border border-tokopedia-green text-tokopedia-green bg-transparent
-           hover:bg-tokopedia-green hover:text-white transition-all duration-300;
   }
 
   /* Card style */
   .card {
-    @apply bg-secondary-accent rounded-[4px] overflow-hidden;
+    @apply bg-secondary rounded-[4px] overflow-hidden;
   }
 
   /* Section container */
@@ -110,12 +109,17 @@ h1, h2, h3 {
 
   /* Font classes */
   .font-heading {
-    font-family: var(--font-inter);
-    font-weight: 700;
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+  }
+
+  .font-category {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
   }
 
   .font-body {
-    font-family: var(--font-inter);
+    font-family: 'Source Sans 3', sans-serif;
     font-weight: 400;
   }
 }
@@ -123,11 +127,6 @@ h1, h2, h3 {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
-  }
-
-  /* High contrast line */
-  .line-accent {
-    @apply border-primary-accent;
   }
 
   /* Backdrop blur for navigation */

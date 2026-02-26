@@ -25,11 +25,11 @@ export default function Accordion({ items }: AccordionProps) {
       {items.map((item, index) => (
         <div
           key={index}
-          className="border border-secondary-accent overflow-hidden"
+          className="border border-muted overflow-hidden"
         >
           <button
             onClick={() => toggleItem(index)}
-            className="w-full flex items-center justify-between p-6 text-left bg-dark-grey hover:bg-secondary-accent transition-colors"
+            className="w-full flex items-center justify-between p-6 text-left bg-secondary hover:bg-muted transition-colors"
           >
             <span className="font-heading text-lg tracking-wide text-foreground pr-4">
               {item.question}
@@ -39,7 +39,7 @@ export default function Accordion({ items }: AccordionProps) {
               transition={{ duration: 0.2 }}
               className="flex-shrink-0"
             >
-              <ChevronDown className="w-5 h-5 text-primary-accent" />
+              <ChevronDown className="w-5 h-5 text-foreground" />
             </motion.div>
           </button>
 
@@ -51,7 +51,7 @@ export default function Accordion({ items }: AccordionProps) {
                 exit={{ height: 0, opacity: 0 }}
                 transition={{ duration: 0.3, ease: [0.04, 0.62, 0.23, 0.98] }}
               >
-                <div className="px-6 pb-6 text-gray-400 tracking-wide leading-relaxed">
+                <div className="px-6 pb-6 text-medium-grey tracking-wide leading-relaxed">
                   {item.answer}
                 </div>
               </motion.div>
