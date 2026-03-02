@@ -9,12 +9,12 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "#FFFFFF",
-        foreground: "#0A0A0A",
-        secondary: "#F5F5F5",
-        muted: "#E5E5E5",
-        "dark-grey": "#333333",
-        "medium-grey": "#666666",
+        background: "#090A0B",
+        foreground: "#FFFFFF",
+        secondary: "#1A1A1A",
+        muted: "#333333",
+        "accent-green": "#22C55E",
+        "accent-red": "#EF4444",
       },
       fontFamily: {
         heading: ["Archivo Black", "sans-serif"],

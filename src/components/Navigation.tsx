@@ -3,8 +3,8 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import PacceLogo from "./PacceLogo";
+import { Menu, X, Instagram } from "lucide-react";
+import RypeLogo from "./RypeLogo";
 
 const navLinks = [
   { href: "/last-man-standing", label: "Last Man Standing" },
@@ -49,25 +49,39 @@ export default function Navigation() {
               href="/"
               className="text-foreground hover:opacity-70 transition-opacity"
             >
-              <PacceLogo className="h-6 md:h-8 w-auto" />
+              <RypeLogo variant="white" className="h-6 md:h-8 w-auto" />
             </Link>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="relative font-body text-sm tracking-wider text-dark-grey hover:text-foreground transition-colors group"
-                >
-                  {link.label}
-                  <span className="absolute left-0 -bottom-1 w-0 h-[2px] bg-foreground transition-all duration-300 group-hover:w-full" />
-                </Link>
+            {/* Desktop Navigation - Centered */}
+            <div className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
+              {navLinks.map((link, index) => (
+                <>
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="relative font-body text-sm tracking-wider text-foreground/70 hover:text-foreground transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                  {index < navLinks.length - 1 && (
+                    <span key={`sep-${index}`} className="text-foreground/30">|</span>
+                  )}
+                </>
               ))}
             </div>
 
-            {/* Right Section */}
+            {/* Right Section - Instagram */}
             <div className="flex items-center gap-4">
+              <a
+                href="https://instagram.com/rlooprun"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hidden md:flex p-2 text-foreground hover:opacity-70 transition-opacity"
+                aria-label="Instagram"
+              >
+                <Instagram size={20} />
+              </a>
+
               {/* Mobile Menu Button */}
               <button
                 aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -107,12 +121,24 @@ export default function Navigation() {
                   <Link
                     href={link.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-3xl font-bold tracking-wider text-foreground hover:text-dark-grey transition-colors"
+                    className="text-3xl font-bold tracking-wider text-foreground hover:text-foreground/70 transition-colors"
                   >
                     {link.label}
                   </Link>
                 </motion.div>
               ))}
+
+              <motion.a
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                href="https://instagram.com/rlooprun"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-8 text-foreground hover:opacity-70 transition-opacity"
+              >
+                <Instagram size={28} />
+              </motion.a>
             </motion.nav>
           </motion.div>
         )}
