@@ -86,7 +86,7 @@ export default function WaitlistPage() {
                 onChange={(e) => setEmail(e.target.value)}
                 required
                 placeholder="you@example.com"
-                className="w-full input-dotted"
+                className="w-full input-styled"
               />
             </div>
 
@@ -100,7 +100,7 @@ export default function WaitlistPage() {
                     key={option}
                     type="button"
                     onClick={() => setFurthestDistance(option)}
-                    className={`px-4 py-3 text-sm font-medium tracking-wider transition-all border-2 border-dashed ${
+                    className={`px-4 py-3 text-sm font-medium tracking-wider transition-all border ${
                       furthestDistance === option
                         ? "bg-foreground text-background border-foreground"
                         : "bg-transparent text-foreground/70 border-foreground/30 hover:border-foreground/60"
@@ -121,7 +121,7 @@ export default function WaitlistPage() {
                 value={plannedLoops}
                 onChange={(e) => setPlannedLoops(e.target.value)}
                 placeholder="e.g., 10, 15, until I drop"
-                className="w-full input-dotted"
+                className="w-full input-styled"
               />
             </div>
 

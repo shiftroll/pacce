@@ -183,7 +183,7 @@ export default function LastManStandingPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       placeholder="Enter your email"
-                      className="w-full input-dotted"
+                      className="w-full input-styled"
                     />
                   </div>
 
@@ -196,7 +196,7 @@ export default function LastManStandingPage() {
                       value={furthestDistance}
                       onChange={(e) => setFurthestDistance(e.target.value)}
                       placeholder="e.g., Marathon, 50K, 100K"
-                      className="w-full input-dotted"
+                      className="w-full input-styled"
                     />
                   </div>
 
@@ -209,7 +209,7 @@ export default function LastManStandingPage() {
                       value={plannedLoops}
                       onChange={(e) => setPlannedLoops(e.target.value)}
                       placeholder="e.g., 10, 15, as many as it takes"
-                      className="w-full input-dotted"
+                      className="w-full input-styled"
                     />
                   </div>
 
