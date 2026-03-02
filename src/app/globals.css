@@ -125,9 +125,9 @@ h3 {
     font-weight: 400;
   }
 
-  /* Dotted border input */
-  .input-dotted {
-    @apply bg-transparent border-2 border-dashed border-foreground/50 px-4 py-3
+  /* Input style */
+  .input-styled {
+    @apply bg-transparent border border-foreground/30 px-4 py-3
            text-foreground placeholder:text-foreground/50 focus:border-foreground
            focus:outline-none transition-colors;
   }

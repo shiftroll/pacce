@@ -87,7 +87,7 @@ export default function Home() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
                   required
-                  className="flex-1 input-dotted text-center sm:text-left"
+                  className="flex-1 input-styled text-center sm:text-left"
                 />
                 <button
                   type="submit"
