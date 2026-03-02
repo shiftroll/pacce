@@ -1,358 +1,242 @@
 "use client";
 
-import Image from "next/image";
+import { useState } from "react";
+import Link from "next/link";
 import { motion } from "framer-motion";
-import { Clock, MapPin, Trophy, Users, Calendar, Zap } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import FilmStrip from "@/components/FilmStrip";
 import ScrollReveal from "@/components/ScrollReveal";
-import Button from "@/components/Button";
-import Accordion from "@/components/Accordion";
-
-const faqItems = [
-  {
-    question: "WHAT IS LAST MAN STANDING?",
-    answer:
-      "Last Man Standing is an elimination-style endurance running event. Participants run laps at set intervals. Each lap, the slowest runners are eliminated until only one remains. It's not about being the fastest—it's about lasting the longest.",
-  },
-  {
-    question: "WHAT ARE THE RULES?",
-    answer:
-      "Runners must complete each lap within the allotted time (typically 6-8 minutes per 400m lap). If you fail to cross the start line before the buzzer sounds for the next lap, you're eliminated. The last runner standing wins. No pacing, no teams—just you against the clock.",
-  },
-  {
-    question: "WHO CAN PARTICIPATE?",
-    answer:
-      "The event is open to runners of all levels aged 18 and above. However, we recommend having a base fitness level of being able to run continuously for at least 60 minutes. A medical clearance may be required for participants over 40 years old.",
-  },
-  {
-    question: "WHAT SHOULD I BRING?",
-    answer:
-      "Bring your running shoes, comfortable athletic wear, and a positive mindset. We'll provide hydration stations with PACCE electrolytes, timing chips, and basic medical support. You may also bring personal nutrition, extra clothes, and a support crew if desired.",
-  },
-  {
-    question: "HOW LONG DOES THE EVENT LAST?",
-    answer:
-      "The duration varies based on participant endurance. Typically, events last between 3-8 hours, with some elite editions lasting 12+ hours. The world record for similar formats exceeds 24 hours. Come prepared to push your limits.",
-  },
-  {
-    question: "WHAT ARE THE PRIZES?",
-    answer:
-      "The Last Man Standing receives a trophy, a year's supply of PACCE products, and bragging rights. Additional prizes are awarded for specific achievements like most improved, best sportsmanship, and milestone completions (50, 100, 150 laps).",
-  },
-  {
-    question: "IS THERE A REFUND POLICY?",
-    answer:
-      "Registrations are transferable up to 14 days before the event. Refunds are available up to 30 days before the event date (minus a 10% processing fee). No refunds are issued within 30 days of the event. Deferrals to future events may be available.",
-  },
-];
 
 export default function LastManStandingPage() {
+  const [email, setEmail] = useState("");
+  const [furthestDistance, setFurthestDistance] = useState("");
+  const [plannedLoops, setPlannedLoops] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log({ email, furthestDistance, plannedLoops });
+    setSubmitted(true);
+  };
+
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[600px] flex items-center justify-center overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Film Strip Borders */}
+        <FilmStrip position="top" />
+        <FilmStrip position="bottom" />
+        <FilmStrip position="left" />
+        <FilmStrip position="right" />
+
+        {/* Background Video */}
         <div className="absolute inset-0 z-0">
-          <Image
-            src="https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=1920&q=80"
-            alt="Runner on track at dusk"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-background/40" />
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-40"
+            poster="https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=1920&q=80"
+          >
+            <source
+              src="https://assets.mixkit.co/videos/preview/mixkit-man-running-on-the-beach-at-sunset-1817-large.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="absolute inset-0 bg-background/50" />
         </div>
 
-        <div className="relative z-10 text-center px-4 max-w-4xl">
-          <motion.span
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-dark-grey text-sm tracking-widest font-medium"
-          >
-            PACCE PRESENTS
-          </motion.span>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1 }}
-            className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold tracking-wider text-foreground mt-4"
-          >
-            LAST MAN
-            <br />
-            STANDING
-          </motion.h1>
-
+        {/* Content */}
+        <div className="relative z-10 text-center px-8 md:px-16 max-w-4xl mx-auto">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="mt-6 text-lg md:text-xl text-dark-grey tracking-wide max-w-2xl mx-auto"
+            transition={{ duration: 0.8 }}
+            className="text-2xl md:text-3xl lg:text-4xl text-foreground italic font-body"
           >
-            The ultimate test of endurance. Run until you can&apos;t. The last
-            runner standing claims victory.
+            &ldquo;What if you run without knowing when it ends?&rdquo;
           </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button href="/waitlist" variant="primary" size="lg">
-              JOIN WAITLIST
-            </Button>
-            <Button href="#concept" variant="ghost" size="lg">
-              LEARN MORE
-            </Button>
-          </motion.div>
         </div>
       </section>
 
-      {/* Event Details Bar */}
-      <section className="bg-foreground py-4">
+      {/* Race for the Committed Section */}
+      <section className="py-20 md:py-32 bg-background">
         <div className="section-container">
-          <div className="flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-background">
-            <div className="flex items-center gap-2">
-              <Calendar size={20} />
-              <span className="font-medium tracking-wider">MARCH 15, 2026</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin size={20} />
-              <span className="font-medium tracking-wider">
-                GELORA BUNG KARNO, JAKARTA
-              </span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Users size={20} />
-              <span className="font-medium tracking-wider">LIMITED TO 200 RUNNERS</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* The Concept Section */}
-      <section id="concept" className="py-20 md:py-32 bg-background">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-            {/* Image */}
+          <div className="max-w-4xl mx-auto">
             <ScrollReveal>
-              <div className="relative aspect-square overflow-hidden">
-                <Image
-                  src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=800&q=80"
-                  alt="Runner in action"
-                  fill
-                  className="object-cover"
-                  sizes="(max-width: 768px) 100vw, 50vw"
-                />
-              </div>
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mb-12">
+                RACE FOR THE COMMITTED
+              </h2>
             </ScrollReveal>
 
-            {/* Text Content */}
-            <div className="space-y-6">
-              <ScrollReveal direction="right">
-                <span className="text-dark-grey text-sm tracking-widest font-medium">
-                  THE CONCEPT
-                </span>
-              </ScrollReveal>
-
-              <ScrollReveal direction="right" delay={0.1}>
-                <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground">
-                  ONE RUNS. MANY FALL. ONE REMAINS.
-                </h2>
-              </ScrollReveal>
-
-              <ScrollReveal direction="right" delay={0.2}>
-                <p className="text-medium-grey text-lg tracking-wide leading-relaxed">
-                  Inspired by the legendary Big Dog&apos;s Backyard Ultra, Last Man
-                  Standing strips running to its purest form. No GPS watches
-                  matter. No splits to chase. Just you, the track, and the clock.
+            <ScrollReveal delay={0.1}>
+              <div className="space-y-6 text-lg md:text-xl text-foreground/80 leading-relaxed font-body">
+                <p>
+                  Last Man Standing is an elimination-style running event unlike any other.
+                  Every hour, runners must complete a{" "}
+                  <span className="highlight-green">6.7 km distance</span> within a{" "}
+                  <span className="highlight-green">60 minute cut-off time</span>.
                 </p>
-              </ScrollReveal>
 
-              <ScrollReveal direction="right" delay={0.3}>
-                <p className="text-medium-grey text-lg tracking-wide leading-relaxed">
-                  Every few minutes, a horn sounds. You must be at the start line
-                  ready for the next lap. Miss it, and you&apos;re out. Simple rules.
-                  Brutal execution. Legendary results.
+                <p>
+                  Miss the cut-off, or{" "}
+                  <span className="highlight-red">choose not to line up for the next one</span>,
+                  and you&apos;re out. The race continues, hour after hour, until only one
+                  runner remains.
                 </p>
-              </ScrollReveal>
 
-              <ScrollReveal direction="right" delay={0.4}>
-                <div className="pt-4">
-                  <Button href="#faq" variant="ghost">
-                    READ THE RULES
-                  </Button>
-                </div>
-              </ScrollReveal>
-            </div>
+                <p>
+                  Every participant is{" "}
+                  <span className="highlight-green">permitted to bring a support team of up to 2 people</span>{" "}
+                  to help with nutrition, hydration, and mental support throughout the event.
+                </p>
+              </div>
+            </ScrollReveal>
           </div>
         </div>
       </section>
 
-      {/* Rules Section */}
+      {/* Join Our Inner Circle Section */}
       <section className="py-20 md:py-32 bg-secondary">
         <div className="section-container">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <span className="text-dark-grey text-sm tracking-widest font-medium">
-                HOW IT WORKS
-              </span>
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
-                THE RULES
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mb-12">
+                JOIN OUR INNER CIRCLE
               </h2>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                icon: Clock,
-                title: "THE CLOCK",
-                description:
-                  "Every 6 minutes, the horn sounds. You must complete one 400m lap and return to the start line before the next horn. No exceptions.",
-              },
-              {
-                icon: MapPin,
-                title: "THE TRACK",
-                description:
-                  "A standard 400m athletics track. One direction. One purpose. The surface is your battlefield, and every step counts.",
-              },
-              {
-                icon: Trophy,
-                title: "THE VICTORY",
-                description:
-                  "The last runner who completes a lap within the time limit wins. There can only be one. Glory awaits those who endure.",
-              },
-            ].map((item, index) => (
-              <ScrollReveal key={item.title} delay={index * 0.15}>
-                <div className="text-center p-8">
-                  <div className="w-20 h-20 mx-auto flex items-center justify-center border border-foreground mb-6">
-                    <item.icon className="w-10 h-10 text-foreground" />
+            <div className="space-y-8">
+              <ScrollReveal delay={0.1}>
+                <div className="flex items-start gap-6">
+                  <span className="text-4xl font-heading text-foreground">1</span>
+                  <div>
+                    <h3 className="font-category text-xl text-foreground mb-2">
+                      PRIORITY ACCESS
+                    </h3>
+                    <p className="text-foreground/70 font-body">
+                      Be the first to know when registration opens and secure your spot
+                      before the general public.
+                    </p>
                   </div>
-                  <h3 className="font-heading text-2xl tracking-wide text-foreground mb-4">
-                    {item.title}
-                  </h3>
-                  <p className="text-medium-grey tracking-wide leading-relaxed">
-                    {item.description}
-                  </p>
                 </div>
               </ScrollReveal>
-            ))}
+
+              <ScrollReveal delay={0.2}>
+                <div className="flex items-start gap-6">
+                  <span className="text-4xl font-heading text-foreground">2</span>
+                  <div>
+                    <h3 className="font-category text-xl text-foreground mb-2">
+                      EARLY BIRD ADVANTAGE
+                    </h3>
+                    <p className="text-foreground/70 font-body">
+                      Inner Circle members get exclusive early bird pricing not available
+                      to the general public.
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.3}>
+                <div className="flex items-start gap-6">
+                  <span className="text-4xl font-heading text-foreground">3</span>
+                  <div>
+                    <h3 className="font-category text-xl text-foreground mb-2">
+                      THE SURVIVAL SECRET
+                    </h3>
+                    <p className="text-foreground/70 font-body">
+                      Get first access to our{" "}
+                      <Link href="/science" className="underline hover:text-foreground">
+                        performance nutrition products
+                      </Link>{" "}
+                      engineered specifically for endurance events like Last Man Standing.
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* What You Get Section */}
+      {/* Interest Form Section */}
       <section className="py-20 md:py-32 bg-background">
         <div className="section-container">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <span className="text-dark-grey text-sm tracking-widest font-medium">
-                REGISTRATION INCLUDES
-              </span>
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
-                WHAT YOU GET
+          <div className="max-w-2xl mx-auto">
+            <ScrollReveal>
+              <h2 className="font-heading text-4xl md:text-5xl text-foreground mb-12 text-center">
+                INTERESTED?
               </h2>
-            </div>
-          </ScrollReveal>
+            </ScrollReveal>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Zap,
-                title: "PACCE HYDRATION",
-                description: "Unlimited PACCE electrolytes throughout the event",
-              },
-              {
-                icon: Trophy,
-                title: "FINISHER MEDAL",
-                description: "Custom medal for all participants who start",
-              },
-              {
-                icon: Users,
-                title: "RACE KIT",
-                description: "Official event t-shirt, bib number, and timing chip",
-              },
-              {
-                icon: Clock,
-                title: "LIVE TRACKING",
-                description: "Real-time lap tracking and leaderboard updates",
-              },
-            ].map((item, index) => (
-              <ScrollReveal key={item.title} delay={index * 0.1}>
-                <div className="bg-secondary p-6 border border-muted hover:border-foreground transition-colors">
-                  <item.icon className="w-8 h-8 text-foreground mb-4" />
-                  <h3 className="font-heading text-lg tracking-wide text-foreground mb-2">
-                    {item.title}
-                  </h3>
-                  <p className="text-medium-grey text-sm tracking-wide">
-                    {item.description}
+            {!submitted ? (
+              <ScrollReveal delay={0.1}>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                      E-MAIL
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="Enter your email"
+                      className="w-full input-dotted"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                      FURTHEST DISTANCE
+                    </label>
+                    <input
+                      type="text"
+                      value={furthestDistance}
+                      onChange={(e) => setFurthestDistance(e.target.value)}
+                      placeholder="e.g., Marathon, 50K, 100K"
+                      className="w-full input-dotted"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                      HOW MANY LOOPS ARE YOU PLANNING TO RUN?
+                    </label>
+                    <input
+                      type="text"
+                      value={plannedLoops}
+                      onChange={(e) => setPlannedLoops(e.target.value)}
+                      placeholder="e.g., 10, 15, as many as it takes"
+                      className="w-full input-dotted"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full mt-8 py-4 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2"
+                  >
+                    JOIN THE INNER CIRCLE
+                    <ArrowRight size={18} />
+                  </button>
+                </form>
+              </ScrollReveal>
+            ) : (
+              <ScrollReveal>
+                <div className="text-center">
+                  <p className="text-2xl font-heading text-foreground mb-4">
+                    YOU&apos;RE IN THE INNER CIRCLE
+                  </p>
+                  <p className="text-foreground/60 font-body">
+                    We&apos;ll be in touch when registration opens. Start training.
                   </p>
                 </div>
               </ScrollReveal>
-            ))}
+            )}
           </div>
         </div>
       </section>
-
-      {/* FAQ Section */}
-      <section id="faq" className="py-20 md:py-32 bg-secondary">
-        <div className="section-container">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <span className="text-dark-grey text-sm tracking-widest font-medium">
-                GOT QUESTIONS?
-              </span>
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground mt-4">
-                FAQ
-              </h2>
-            </div>
-          </ScrollReveal>
-
-          <ScrollReveal delay={0.2}>
-            <div className="max-w-3xl mx-auto">
-              <Accordion items={faqItems} />
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 md:py-32 bg-background">
-        <div className="section-container">
-          <ScrollReveal>
-            <div className="text-center max-w-3xl mx-auto">
-              <h2 className="font-heading text-3xl md:text-4xl lg:text-5xl font-bold tracking-wide text-foreground">
-                ARE YOU READY TO BE THE LAST ONE STANDING?
-              </h2>
-              <p className="mt-6 text-medium-grey text-lg tracking-wide">
-                Registration closes when we hit 200 runners or 7 days before the
-                event—whichever comes first. Don&apos;t wait.
-              </p>
-              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-                <Button href="/waitlist" variant="primary" size="lg">
-                  JOIN WAITLIST
-                </Button>
-              </div>
-              <p className="mt-4 text-medium-grey text-sm tracking-wide">
-                Early Bird: Rp 350.000 &bull; Regular: Rp 450.000
-              </p>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      {/* Mobile Floating Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 p-4 bg-background/95 backdrop-blur-md border-t border-muted md:hidden">
-        <Button
-          href="/waitlist"
-          variant="primary"
-          size="lg"
-          className="w-full"
-        >
-          JOIN WAITLIST
-        </Button>
-      </div>
     </>
   );
 }

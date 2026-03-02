@@ -2,170 +2,143 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Check } from "lucide-react";
-import ScrollReveal from "@/components/ScrollReveal";
-import Button from "@/components/Button";
+import { ArrowRight, Check } from "lucide-react";
+import FilmStrip from "@/components/FilmStrip";
 
-const distanceOptions = [
-  { value: "10k", label: "10K" },
-  { value: "15k", label: "15K" },
-  { value: "half-marathon", label: "Half Marathon (21K)" },
-  { value: "marathon", label: "Marathon (42K)" },
-  { value: "ultra", label: "Ultra (50K+)" },
-];
+const distanceOptions = ["5K", "10K", "Half Marathon", "Marathon", "50K", "100K+"];
 
 export default function WaitlistPage() {
   const [submitted, setSubmitted] = useState(false);
-  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
-  const [farthestDistance, setFarthestDistance] = useState("");
+  const [furthestDistance, setFurthestDistance] = useState("");
+  const [plannedLoops, setPlannedLoops] = useState("");
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // In production, this would POST to an API
-    console.log({ fullName, email, farthestDistance });
+    console.log({ email, furthestDistance, plannedLoops });
     setSubmitted(true);
   };
 
   if (submitted) {
     return (
-      <section className="pt-32 pb-20 bg-background min-h-screen flex items-center">
-        <div className="section-container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-lg mx-auto text-center"
-          >
-            <div className="w-20 h-20 mx-auto flex items-center justify-center border-2 border-foreground mb-8">
-              <Check className="w-10 h-10 text-foreground" />
-            </div>
-            <h1 className="font-heading text-3xl md:text-4xl font-bold tracking-wide text-foreground">
-              YOU&apos;RE ON THE LIST
-            </h1>
-            <p className="mt-6 text-medium-grey text-lg tracking-wide leading-relaxed">
-              We&apos;ll notify you when registration opens for Last Man Standing.
-              Get ready to test your limits.
-            </p>
-            <div className="mt-10">
-              <Button href="/" variant="ghost">
-                BACK TO HOME
-              </Button>
-            </div>
-          </motion.div>
-        </div>
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <FilmStrip position="top" />
+        <FilmStrip position="bottom" />
+        <FilmStrip position="left" />
+        <FilmStrip position="right" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-lg mx-auto text-center px-8"
+        >
+          <div className="w-20 h-20 mx-auto flex items-center justify-center border-2 border-foreground mb-8">
+            <Check className="w-10 h-10 text-foreground" />
+          </div>
+          <h1 className="font-heading text-3xl md:text-4xl text-foreground">
+            YOU&apos;RE ON THE LIST
+          </h1>
+          <p className="mt-6 text-foreground/60 text-lg font-body">
+            We&apos;ll notify you when registration opens for Last Man Standing.
+            Start training.
+          </p>
+        </motion.div>
       </section>
     );
   }
 
   return (
-    <>
-      {/* Hero */}
-      <section className="pt-32 pb-12 bg-background">
-        <div className="section-container">
-          <ScrollReveal>
-            <div className="text-center max-w-2xl mx-auto">
-              <span className="text-dark-grey text-sm tracking-widest font-medium">
-                LAST MAN STANDING
-              </span>
-              <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold tracking-wide text-foreground mt-4">
-                JOIN THE WAITLIST
-              </h1>
-              <p className="mt-6 text-medium-grey text-lg tracking-wide leading-relaxed">
-                Be the first to know when registration opens. Spots are limited
-                to 200 runners.
-              </p>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-32">
+      <FilmStrip position="top" />
+      <FilmStrip position="bottom" />
+      <FilmStrip position="left" />
+      <FilmStrip position="right" />
+
+      <div className="section-container relative z-10">
+        <div className="max-w-xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-center mb-12"
+          >
+            <h1 className="font-heading text-4xl md:text-5xl text-foreground mb-4">
+              JOIN THE WAITLIST
+            </h1>
+            <p className="text-foreground/60 font-body">
+              Be the first to know when registration opens. Limited to 200 runners.
+            </p>
+          </motion.div>
+
+          <motion.form
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+            onSubmit={handleSubmit}
+            className="space-y-6"
+          >
+            <div>
+              <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                E-MAIL
+              </label>
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                placeholder="you@example.com"
+                className="w-full input-dotted"
+              />
             </div>
-          </ScrollReveal>
-        </div>
-      </section>
 
-      {/* Form */}
-      <section className="pb-32 bg-background">
-        <div className="section-container">
-          <ScrollReveal delay={0.1}>
-            <form
-              onSubmit={handleSubmit}
-              className="max-w-lg mx-auto space-y-8"
+            <div>
+              <label className="block text-sm text-foreground/60 mb-3 tracking-wider">
+                FURTHEST DISTANCE
+              </label>
+              <div className="grid grid-cols-3 gap-2">
+                {distanceOptions.map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => setFurthestDistance(option)}
+                    className={`px-4 py-3 text-sm font-medium tracking-wider transition-all border-2 border-dashed ${
+                      furthestDistance === option
+                        ? "bg-foreground text-background border-foreground"
+                        : "bg-transparent text-foreground/70 border-foreground/30 hover:border-foreground/60"
+                    }`}
+                  >
+                    {option}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                HOW MANY LOOPS ARE YOU PLANNING TO RUN?
+              </label>
+              <input
+                type="text"
+                value={plannedLoops}
+                onChange={(e) => setPlannedLoops(e.target.value)}
+                placeholder="e.g., 10, 15, until I drop"
+                className="w-full input-dotted"
+              />
+            </div>
+
+            <button
+              type="submit"
+              className="w-full mt-8 py-4 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2"
             >
-              {/* Full Name */}
-              <div>
-                <label
-                  htmlFor="fullName"
-                  className="block text-sm font-medium tracking-wider text-foreground mb-2"
-                >
-                  FULL NAME
-                </label>
-                <input
-                  id="fullName"
-                  type="text"
-                  required
-                  value={fullName}
-                  onChange={(e) => setFullName(e.target.value)}
-                  placeholder="Enter your full name"
-                  className="w-full px-4 py-3 bg-background border border-muted text-foreground placeholder:text-medium-grey tracking-wide focus:outline-none focus:border-foreground transition-colors"
-                />
-              </div>
+              NOTIFY ME
+              <ArrowRight size={18} />
+            </button>
 
-              {/* Email */}
-              <div>
-                <label
-                  htmlFor="email"
-                  className="block text-sm font-medium tracking-wider text-foreground mb-2"
-                >
-                  EMAIL
-                </label>
-                <input
-                  id="email"
-                  type="email"
-                  required
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="you@example.com"
-                  className="w-full px-4 py-3 bg-background border border-muted text-foreground placeholder:text-medium-grey tracking-wide focus:outline-none focus:border-foreground transition-colors"
-                />
-              </div>
-
-              {/* Farthest Run Distance */}
-              <div>
-                <label className="block text-sm font-medium tracking-wider text-foreground mb-3">
-                  FARTHEST RUN DISTANCE
-                </label>
-                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                  {distanceOptions.map((option) => (
-                    <button
-                      key={option.value}
-                      type="button"
-                      onClick={() => setFarthestDistance(option.value)}
-                      className={`px-4 py-3 text-sm font-medium tracking-wider transition-all ${
-                        farthestDistance === option.value
-                          ? "bg-foreground text-background"
-                          : "bg-secondary text-foreground hover:bg-muted"
-                      }`}
-                    >
-                      {option.label}
-                    </button>
-                  ))}
-                </div>
-              </div>
-
-              {/* Submit */}
-              <div className="pt-4">
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="lg"
-                  className="w-full"
-                >
-                  JOIN WAITLIST
-                </Button>
-                <p className="mt-4 text-medium-grey text-xs tracking-wide text-center">
-                  We respect your privacy. No spam, ever.
-                </p>
-              </div>
-            </form>
-          </ScrollReveal>
+            <p className="text-center text-foreground/40 text-sm">
+              No spam. Unsubscribe anytime.
+            </p>
+          </motion.form>
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

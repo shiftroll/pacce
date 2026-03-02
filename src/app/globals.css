@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --background: #FFFFFF;
-  --foreground: #0A0A0A;
-  --secondary: #F5F5F5;
-  --muted: #E5E5E5;
+  --background: #090A0B;
+  --foreground: #FFFFFF;
+  --secondary: #1A1A1A;
+  --muted: #333333;
+  --accent-green: #22C55E;
+  --accent-red: #EF4444;
 }
 
 * {
@@ -44,22 +46,22 @@ h3 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #F5F5F5;
+  background: #1A1A1A;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #CCCCCC;
+  background: #444444;
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #AAAAAA;
+  background: #555555;
 }
 
 /* Selection color */
 ::selection {
-  background: rgba(10, 10, 10, 0.15);
-  color: #0A0A0A;
+  background: rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
 }
 
 /* Hide scrollbar for filter tabs */
@@ -122,6 +124,36 @@ h3 {
     font-family: 'Source Sans 3', sans-serif;
     font-weight: 400;
   }
+
+  /* Dotted border input */
+  .input-dotted {
+    @apply bg-transparent border-2 border-dashed border-foreground/50 px-4 py-3
+           text-foreground placeholder:text-foreground/50 focus:border-foreground
+           focus:outline-none transition-colors;
+  }
+
+  /* Film strip pattern */
+  .film-strip {
+    background-image: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 20px,
+      #333 20px,
+      #333 22px
+    );
+    background-size: 42px 100%;
+  }
+
+  .film-strip-vertical {
+    background-image: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 20px,
+      #333 20px,
+      #333 22px
+    );
+    background-size: 100% 42px;
+  }
 }
 
 @layer utilities {
@@ -132,5 +164,15 @@ h3 {
   /* Backdrop blur for navigation */
   .nav-blur {
     @apply backdrop-blur-md bg-background/80;
+  }
+
+  /* Green underline highlight */
+  .highlight-green {
+    @apply underline decoration-accent-green decoration-2 underline-offset-4;
+  }
+
+  /* Red underline highlight */
+  .highlight-red {
+    @apply underline decoration-accent-red decoration-2 underline-offset-4;
   }
 }
