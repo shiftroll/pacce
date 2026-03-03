@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -42,10 +43,25 @@ export default function LastManStandingPage() {
 
         {/* Content */}
         <div className="relative z-10 text-center px-8 md:px-16 max-w-4xl mx-auto">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
+            className="mb-8"
+          >
+            <Image
+              src="/images/rype-logo.png"
+              alt="RYPE"
+              width={400}
+              height={120}
+              className="mx-auto"
+              priority
+            />
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
             className="text-2xl md:text-3xl lg:text-4xl text-foreground italic font-body"
           >
             &ldquo;What if you run without knowing when it ends?&rdquo;
