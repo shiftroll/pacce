@@ -12,11 +12,37 @@ export default function LastManStandingPage() {
   const [furthestDistance, setFurthestDistance] = useState("");
   const [plannedLoops, setPlannedLoops] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{ email?: string; furthestDistance?: string; plannedLoops?: string }>({});
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const validateForm = () => {
+    const newErrors: { email?: string; furthestDistance?: string; plannedLoops?: string } = {};
+
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!furthestDistance.trim()) {
+      newErrors.furthestDistance = "Furthest distance is required";
+    }
+
+    if (!plannedLoops.trim()) {
+      newErrors.plannedLoops = "Planned loops is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, furthestDistance, plannedLoops });
-    setSubmitted(true);
+    if (validateForm()) {
+      console.log({ email, furthestDistance, plannedLoops });
+      setSubmitted(true);
+    }
   };
 
   return (
@@ -184,7 +210,7 @@ export default function LastManStandingPage() {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
-                      E-MAIL
+                      E-MAIL <span className="text-accent-red">*</span>
                     </label>
                     <input
                       type="email"
@@ -192,34 +218,45 @@ export default function LastManStandingPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                       placeholder="Enter your email"
-                      className="w-full input-styled"
+                      className={`w-full input-styled ${errors.email ? "border-accent-red" : ""}`}
                     />
+                    {errors.email && (
+                      <p className="text-accent-red text-sm mt-1">{errors.email}</p>
+                    )}
                   </div>
 
                   <div>
                     <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
-                      FURTHEST DISTANCE
+                      FURTHEST DISTANCE <span className="text-accent-red">*</span>
                     </label>
                     <input
                       type="text"
                       value={furthestDistance}
                       onChange={(e) => setFurthestDistance(e.target.value)}
+                      required
                       placeholder="e.g., Marathon, 50K, 100K"
-                      className="w-full input-styled"
+                      className={`w-full input-styled ${errors.furthestDistance ? "border-accent-red" : ""}`}
                     />
+                    {errors.furthestDistance && (
+                      <p className="text-accent-red text-sm mt-1">{errors.furthestDistance}</p>
+                    )}
                   </div>
 
                   <div>
                     <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
-                      HOW MANY LOOPS ARE YOU PLANNING TO RUN?
+                      HOW MANY LOOPS ARE YOU PLANNING TO RUN? <span className="text-accent-red">*</span>
                     </label>
                     <input
                       type="text"
                       value={plannedLoops}
                       onChange={(e) => setPlannedLoops(e.target.value)}
+                      required
                       placeholder="e.g., 10, 15, as many as it takes"
-                      className="w-full input-styled"
+                      className={`w-full input-styled ${errors.plannedLoops ? "border-accent-red" : ""}`}
                     />
+                    {errors.plannedLoops && (
+                      <p className="text-accent-red text-sm mt-1">{errors.plannedLoops}</p>
+                    )}
                   </div>
 
                   <button
