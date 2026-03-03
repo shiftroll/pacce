@@ -4,7 +4,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
-import FilmStrip from "@/components/FilmStrip";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export default function LastManStandingPage() {
@@ -23,12 +22,6 @@ export default function LastManStandingPage() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Film Strip Borders */}
-        <FilmStrip position="top" />
-        <FilmStrip position="bottom" />
-        <FilmStrip position="left" />
-        <FilmStrip position="right" />
-
         {/* Background Video */}
         <div className="absolute inset-0 z-0">
           <video

@@ -19,7 +19,7 @@ const config: Config = {
       fontFamily: {
         heading: ["Archivo Black", "sans-serif"],
         category: ["Poppins", "sans-serif"],
-        body: ["Source Sans 3", "sans-serif"],
+        body: ["Inter", "sans-serif"],
       },
       letterSpacing: {
         wider: "0.1em",

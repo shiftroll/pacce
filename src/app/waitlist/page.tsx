@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
-import FilmStrip from "@/components/FilmStrip";
 
 const distanceOptions = ["5K", "10K", "Half Marathon", "Marathon", "50K", "100K+"];
 
@@ -22,11 +21,6 @@ export default function WaitlistPage() {
   if (submitted) {
     return (
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <FilmStrip position="top" />
-        <FilmStrip position="bottom" />
-        <FilmStrip position="left" />
-        <FilmStrip position="right" />
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -49,11 +43,6 @@ export default function WaitlistPage() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden py-32">
-      <FilmStrip position="top" />
-      <FilmStrip position="bottom" />
-      <FilmStrip position="left" />
-      <FilmStrip position="right" />
-
       <div className="section-container relative z-10">
         <div className="max-w-xl mx-auto">
           <motion.div

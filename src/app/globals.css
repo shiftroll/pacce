@@ -22,7 +22,7 @@ html {
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 /* Uppercase bold headers */
@@ -121,7 +121,7 @@ h3 {
   }
 
   .font-body {
-    font-family: 'Source Sans 3', sans-serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
   }
 
