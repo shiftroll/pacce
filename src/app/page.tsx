@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import FilmStrip from "@/components/FilmStrip";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -18,12 +17,6 @@ export default function Home() {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Film Strip Borders */}
-      <FilmStrip position="top" />
-      <FilmStrip position="bottom" />
-      <FilmStrip position="left" />
-      <FilmStrip position="right" />
-
       {/* Background Video */}
       <div className="absolute inset-0 z-0">
         <video
