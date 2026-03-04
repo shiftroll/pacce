@@ -63,20 +63,20 @@ export default function Home() {
         </div>
 
         {/* Content */}
-        <div className="relative z-10 text-center px-8 md:px-16 max-w-4xl mx-auto">
+        <div className="relative z-10 text-center px-4 md:px-16 w-full max-w-[800px] mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8 mx-auto"
-            style={{ width: 800, aspectRatio: '4150 / 2146' }}
+            className="mb-8 w-full"
+            style={{ aspectRatio: '4150 / 2146' }}
           >
             <Image
               src="/images/last-man-standing.png"
               alt="Last Man Standing"
               width={800}
               height={414}
-              className="w-full h-full"
+              className="w-full h-auto"
               priority
             />
           </motion.div>
