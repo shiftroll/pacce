@@ -6,6 +6,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
+import backgroundImage from "@/images/background-image-03.png";
 
 export default function Home() {
   const [email, setEmail] = useState("");
@@ -52,7 +53,7 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://vzis9pqqubsmcmni.private.blob.vercel-storage.com/background-image-03.png"
+            src={backgroundImage}
             alt="Background"
             fill
             className="object-cover opacity-40"
