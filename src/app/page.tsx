@@ -1,103 +1,288 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
+import { ArrowRight } from "lucide-react";
+import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   const [email, setEmail] = useState("");
+  const [furthestDistance, setFurthestDistance] = useState("");
+  const [plannedLoops, setPlannedLoops] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [errors, setErrors] = useState<{ email?: string; furthestDistance?: string; plannedLoops?: string }>({});
+
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+  const validateForm = () => {
+    const newErrors: { email?: string; furthestDistance?: string; plannedLoops?: string } = {};
+
+    if (!email.trim()) {
+      newErrors.email = "Email is required";
+    } else if (!emailRegex.test(email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    if (!furthestDistance.trim()) {
+      newErrors.furthestDistance = "Furthest distance is required";
+    }
+
+    if (!plannedLoops.trim()) {
+      newErrors.plannedLoops = "Planned loops is required";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (email) {
-      console.log("Email submitted:", email);
+    if (validateForm()) {
+      console.log({ email, furthestDistance, plannedLoops });
       setSubmitted(true);
     }
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Video */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          muted
-          loop
-          playsInline
-          className="w-full h-full object-cover opacity-50"
-          poster="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?w=1920&q=80"
-        >
-          <source
-            src="https://assets.mixkit.co/videos/preview/mixkit-man-running-on-the-beach-at-sunset-1817-large.mp4"
-            type="video/mp4"
-          />
-        </video>
-        <div className="absolute inset-0 bg-background/60" />
-      </div>
+    <>
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover opacity-40"
+            poster="https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=1920&q=80"
+          >
+            <source
+              src="https://assets.mixkit.co/videos/preview/mixkit-man-running-on-the-beach-at-sunset-1817-large.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="absolute inset-0 bg-background/50" />
+        </div>
 
-      {/* Content */}
-      <div className="relative z-10 text-center px-8 md:px-16 max-w-4xl mx-auto">
-        {/* LMS Logo Placeholder */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="mb-12"
-        >
-          <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl text-foreground tracking-tight">
-            LAST MAN
-            <br />
-            STANDING
-          </h1>
-        </motion.div>
+        {/* Content */}
+        <div className="relative z-10 text-center px-8 md:px-16 max-w-4xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="mb-8"
+          >
+            <Image
+              src="/images/rype-logo.png"
+              alt="RYPE"
+              width={400}
+              height={120}
+              className="mx-auto"
+              priority
+            />
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="text-2xl md:text-3xl lg:text-4xl text-foreground italic font-body"
+          >
+            &ldquo;What if you run without knowing when it ends?&rdquo;
+          </motion.p>
+        </div>
+      </section>
 
-        {/* Tagline */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="text-lg md:text-xl text-foreground/80 tracking-wide max-w-2xl mx-auto mb-16 font-body"
-        >
-          6.7 km loop. Every hour on the hour. No finish line. Until Last Man Standing.
-        </motion.p>
+      {/* Race for the Committed Section */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="section-container">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mb-12">
+                RACE FOR THE COMMITTED
+              </h2>
+            </ScrollReveal>
 
-        {/* Email Signup */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="max-w-xl mx-auto"
-        >
-          {!submitted ? (
-            <>
-              <p className="text-sm text-foreground/60 mb-6 tracking-wide">
-                Join our interest list, and be the Last Man Standing in 2026.
-              </p>
-              <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-4">
-                <input
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  placeholder="Enter your email"
-                  required
-                  className="flex-1 input-styled text-center sm:text-left"
-                />
-                <button
-                  type="submit"
-                  className="px-8 py-3 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors"
-                >
-                  Notify Me.
-                </button>
-              </form>
-            </>
-          ) : (
-            <div className="text-foreground">
-              <p className="text-xl font-medium mb-2">You&apos;re on the list.</p>
-              <p className="text-foreground/60">We&apos;ll notify you when registration opens.</p>
+            <ScrollReveal delay={0.1}>
+              <div className="space-y-6 text-lg md:text-xl text-foreground/80 leading-relaxed font-body">
+                <p>
+                  Last Man Standing is an elimination-style running event unlike any other.
+                  Every hour, runners must complete a{" "}
+                  <span className="highlight-green">6.7 km distance</span> within a{" "}
+                  <span className="highlight-green">60 minute cut-off time</span>.
+                </p>
+
+                <p>
+                  Miss the cut-off, or{" "}
+                  <span className="highlight-red">choose not to line up for the next one</span>,
+                  and you&apos;re out. The race continues, hour after hour, until only one
+                  runner remains.
+                </p>
+
+                <p>
+                  Every participant is{" "}
+                  <span className="highlight-green">permitted to bring a support team of up to 2 people</span>{" "}
+                  to help with nutrition, hydration, and mental support throughout the event.
+                </p>
+              </div>
+            </ScrollReveal>
+          </div>
+        </div>
+      </section>
+
+      {/* Join Our Inner Circle Section */}
+      <section className="py-20 md:py-32 bg-secondary">
+        <div className="section-container">
+          <div className="max-w-4xl mx-auto">
+            <ScrollReveal>
+              <h2 className="font-heading text-4xl md:text-5xl lg:text-6xl text-foreground mb-12">
+                JOIN OUR INNER CIRCLE
+              </h2>
+            </ScrollReveal>
+
+            <div className="space-y-8">
+              <ScrollReveal delay={0.1}>
+                <div className="flex items-start gap-6">
+                  <span className="text-4xl font-heading text-foreground">1</span>
+                  <div>
+                    <h3 className="font-category text-xl text-foreground mb-2">
+                      PRIORITY ACCESS
+                    </h3>
+                    <p className="text-foreground/70 font-body">
+                      Be the first to know when registration opens and secure your spot
+                      before the general public.
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.2}>
+                <div className="flex items-start gap-6">
+                  <span className="text-4xl font-heading text-foreground">2</span>
+                  <div>
+                    <h3 className="font-category text-xl text-foreground mb-2">
+                      EARLY BIRD ADVANTAGE
+                    </h3>
+                    <p className="text-foreground/70 font-body">
+                      Inner Circle members get exclusive early bird pricing not available
+                      to the general public.
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
+
+              <ScrollReveal delay={0.3}>
+                <div className="flex items-start gap-6">
+                  <span className="text-4xl font-heading text-foreground">3</span>
+                  <div>
+                    <h3 className="font-category text-xl text-foreground mb-2">
+                      THE SURVIVAL SECRET
+                    </h3>
+                    <p className="text-foreground/70 font-body">
+                      Get first access to our{" "}
+                      <Link href="/science" className="underline hover:text-foreground">
+                        performance nutrition products
+                      </Link>{" "}
+                      engineered specifically for endurance events like Last Man Standing.
+                    </p>
+                  </div>
+                </div>
+              </ScrollReveal>
             </div>
-          )}
-        </motion.div>
-      </div>
-    </section>
+          </div>
+        </div>
+      </section>
+
+      {/* Interest Form Section */}
+      <section className="py-20 md:py-32 bg-background">
+        <div className="section-container">
+          <div className="max-w-2xl mx-auto">
+            <ScrollReveal>
+              <h2 className="font-heading text-4xl md:text-5xl text-foreground mb-12 text-center">
+                INTERESTED?
+              </h2>
+            </ScrollReveal>
+
+            {!submitted ? (
+              <ScrollReveal delay={0.1}>
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                      E-MAIL <span className="text-accent-red">*</span>
+                    </label>
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                      placeholder="Enter your email"
+                      className={`w-full input-styled ${errors.email ? "border-accent-red" : ""}`}
+                    />
+                    {errors.email && (
+                      <p className="text-accent-red text-sm mt-1">{errors.email}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                      FURTHEST DISTANCE <span className="text-accent-red">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={furthestDistance}
+                      onChange={(e) => setFurthestDistance(e.target.value)}
+                      required
+                      placeholder="e.g., Marathon, 50K, 100K"
+                      className={`w-full input-styled ${errors.furthestDistance ? "border-accent-red" : ""}`}
+                    />
+                    {errors.furthestDistance && (
+                      <p className="text-accent-red text-sm mt-1">{errors.furthestDistance}</p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                      HOW MANY LOOPS ARE YOU PLANNING TO RUN? <span className="text-accent-red">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={plannedLoops}
+                      onChange={(e) => setPlannedLoops(e.target.value)}
+                      required
+                      placeholder="e.g., 10, 15, as many as it takes"
+                      className={`w-full input-styled ${errors.plannedLoops ? "border-accent-red" : ""}`}
+                    />
+                    {errors.plannedLoops && (
+                      <p className="text-accent-red text-sm mt-1">{errors.plannedLoops}</p>
+                    )}
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full mt-8 py-4 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2"
+                  >
+                    JOIN THE INNER CIRCLE
+                    <ArrowRight size={18} />
+                  </button>
+                </form>
+              </ScrollReveal>
+            ) : (
+              <ScrollReveal>
+                <div className="text-center">
+                  <p className="text-2xl font-heading text-foreground mb-4">
+                    YOU&apos;RE IN THE INNER CIRCLE
+                  </p>
+                  <p className="text-foreground/60 font-body">
+                    We&apos;ll be in touch when registration opens. Start training.
+                  </p>
+                </div>
+              </ScrollReveal>
+            )}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
