@@ -73,14 +73,15 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="mb-8"
+            className="mb-8 mx-auto"
+            style={{ width: 800, aspectRatio: '4150 / 2146' }}
           >
             <Image
               src="/images/last-man-standing.png"
               alt="Last Man Standing"
-              width={400}
-              height={120}
-              className="mx-auto"
+              width={800}
+              height={414}
+              className="w-full h-full"
               priority
             />
           </motion.div>
