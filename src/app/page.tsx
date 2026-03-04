@@ -49,21 +49,15 @@ export default function Home() {
     <>
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Background Video */}
+        {/* Background Image */}
         <div className="absolute inset-0 z-0">
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="w-full h-full object-cover opacity-40"
-            poster="https://images.unsplash.com/photo-1596727362302-b8d891c42ab8?w=1920&q=80"
-          >
-            <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-man-running-on-the-beach-at-sunset-1817-large.mp4"
-              type="video/mp4"
-            />
-          </video>
+          <Image
+            src="https://vzis9pqqubsmcmni.private.blob.vercel-storage.com/background-image-03.png"
+            alt="Background"
+            fill
+            className="object-cover opacity-40"
+            priority
+          />
           <div className="absolute inset-0 bg-background/50" />
         </div>
 
