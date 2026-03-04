@@ -12,6 +12,11 @@ const nextConfig = {
         hostname: "assets.mixkit.co",
         pathname: "/**",
       },
+      {
+        protocol: "https",
+        hostname: "vzis9pqqubsmcmni.private.blob.vercel-storage.com",
+        pathname: "/**",
+      },
     ],
   },
 };
