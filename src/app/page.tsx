@@ -229,14 +229,18 @@ export default function Home() {
                     <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
                       FURTHEST DISTANCE <span className="text-accent-red">*</span>
                     </label>
-                    <input
-                      type="text"
+                    <select
                       value={furthestDistance}
                       onChange={(e) => setFurthestDistance(e.target.value)}
                       required
-                      placeholder="e.g., Marathon, 50K, 100K"
                       className={`w-full input-styled ${errors.furthestDistance ? "border-accent-red" : ""}`}
-                    />
+                    >
+                      <option value="">Select distance</option>
+                      <option value="5K">5K</option>
+                      <option value="10K">10K</option>
+                      <option value="15K">15K</option>
+                      <option value="Marathon">Marathon</option>
+                    </select>
                     {errors.furthestDistance && (
                       <p className="text-accent-red text-sm mt-1">{errors.furthestDistance}</p>
                     )}
@@ -246,14 +250,19 @@ export default function Home() {
                     <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
                       HOW MANY LOOPS ARE YOU PLANNING TO RUN? <span className="text-accent-red">*</span>
                     </label>
-                    <input
-                      type="text"
+                    <select
                       value={plannedLoops}
                       onChange={(e) => setPlannedLoops(e.target.value)}
                       required
-                      placeholder="e.g., 10, 15, as many as it takes"
                       className={`w-full input-styled ${errors.plannedLoops ? "border-accent-red" : ""}`}
-                    />
+                    >
+                      <option value="">Select loops</option>
+                      <option value="5">5 loops</option>
+                      <option value="10">10 loops</option>
+                      <option value="15">15 loops</option>
+                      <option value="20">20 loops</option>
+                      <option value="25+">25+ loops</option>
+                    </select>
                     {errors.plannedLoops && (
                       <p className="text-accent-red text-sm mt-1">{errors.plannedLoops}</p>
                     )}
