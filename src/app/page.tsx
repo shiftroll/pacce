@@ -76,8 +76,8 @@ export default function Home() {
             className="mb-8"
           >
             <Image
-              src="/images/rype-logo.png"
-              alt="RYPE"
+              src="/images/last-man-standing.png"
+              alt="Last Man Standing"
               width={400}
               height={120}
               className="mx-auto"
