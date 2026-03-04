@@ -7,7 +7,6 @@ import { Menu, X, Instagram } from "lucide-react";
 import RypeLogo from "./RypeLogo";
 
 const navLinks = [
-  { href: "/last-man-standing", label: "Last Man Standing" },
   { href: "/science", label: "Science" },
 ];
 

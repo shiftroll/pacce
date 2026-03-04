@@ -11,6 +11,7 @@
   "dependencies": {
     "@fontsource/archivo-black": "^5.2.8",
     "@fontsource/inter": "^5.2.8",
+    "@fontsource/montserrat": "^5.2.8",
     "@fontsource/poppins": "^5.2.7",
     "@fontsource/source-sans-3": "^5.2.9",
     "framer-motion": "^12.31.0",
