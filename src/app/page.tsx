@@ -84,8 +84,8 @@ export default function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-[1.62rem] lg:text-[2.16rem] uppercase"
-            style={{ fontFamily: "'Oswald', sans-serif", fontWeight: 500, color: "#E5DFCA" }}
+            className="text-xl md:text-[1.62rem] lg:text-[2.16rem] uppercase max-w-[60%] md:max-w-[55%] lg:max-w-none"
+            style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 700, color: "#E5DFCA" }}
           >
             &ldquo;What if you run without knowing when it ends?&rdquo;
           </motion.p>
