@@ -103,7 +103,7 @@ export default function WaitlistPage() {
 
             <div>
               <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
-                HOW MANY LOOPS ARE YOU PLANNING TO RUN?
+                HOW MANY LOOPS CAN YOU SURVIVE?
               </label>
               <input
                 type="text"
