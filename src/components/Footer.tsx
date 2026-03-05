@@ -5,7 +5,6 @@ import { Instagram } from "lucide-react";
 import RypeLogo from "./RypeLogo";
 
 const footerLinks = [
-  { href: "/last-man-standing", label: "Last Man Standing" },
   { href: "/science", label: "Science" },
   { href: "/waitlist", label: "Join Waitlist" },
 ];
