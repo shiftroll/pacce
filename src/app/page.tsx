@@ -80,15 +80,20 @@ export default function Home() {
               priority
             />
           </motion.div>
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-xl md:text-[1.62rem] lg:text-[2.16rem] uppercase max-w-[60%] md:max-w-[55%] lg:max-w-none text-center mx-auto leading-[1.1]"
-            style={{ fontFamily: "'Source Sans 3', sans-serif", fontWeight: 700, color: "#E5DFCA" }}
+            className="flex justify-center"
           >
-            &ldquo;What if you run without knowing when it ends?&rdquo;
-          </motion.p>
+            <Image
+              src="/images/Quotes LMS.png"
+              alt="What if you run without knowing when it ends?"
+              width={800}
+              height={200}
+              className="h-[3.6rem] md:h-[5rem] lg:h-[6.5rem] w-auto"
+            />
+          </motion.div>
         </div>
       </section>
 
