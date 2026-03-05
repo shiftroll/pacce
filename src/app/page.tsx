@@ -249,7 +249,7 @@ export default function Home() {
 
                   <div>
                     <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
-                      HOW MANY LOOPS ARE YOU PLANNING TO RUN? <span className="text-accent-red">*</span>
+                      HOW MANY LOOPS CAN YOU SURVIVE? <span className="text-accent-red">*</span>
                     </label>
                     <select
                       value={plannedLoops}
