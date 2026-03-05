@@ -114,8 +114,7 @@ export default function Home() {
                 <p>
                   Miss the cut-off, or{" "}
                   <span className="highlight-red">choose not to line up for the next one</span>,
-                  and you&apos;re out. The race continues, hour after hour, until only one
-                  runner remains.
+                  and you&apos;re out. The race continues, hour after hour, until the last man standing.
                 </p>
 
                 <p>
