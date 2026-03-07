@@ -11,6 +11,7 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [furthestDistance, setFurthestDistance] = useState("");
   const [plannedLoops, setPlannedLoops] = useState("");
+  const [community, setCommunity] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [errors, setErrors] = useState<{ email?: string; furthestDistance?: string; plannedLoops?: string }>({});
 
@@ -43,7 +44,7 @@ export default function Home() {
       await fetch("/api/submissions", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ source: "homepage", email, furthestDistance, plannedLoops }),
+        body: JSON.stringify({ source: "homepage", email, furthestDistance, plannedLoops, community }),
       });
       setSubmitted(true);
     }
@@ -266,6 +267,19 @@ export default function Home() {
                     {errors.plannedLoops && (
                       <p className="text-accent-red text-sm mt-1">{errors.plannedLoops}</p>
                     )}
+                  </div>
+
+                  <div>
+                    <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                      COMMUNITY
+                    </label>
+                    <input
+                      type="text"
+                      value={community}
+                      onChange={(e) => setCommunity(e.target.value)}
+                      placeholder="Which community are you from?"
+                      className="w-full input-styled"
+                    />
                   </div>
 
                   <button

@@ -11,13 +11,14 @@ export default function WaitlistPage() {
   const [email, setEmail] = useState("");
   const [furthestDistance, setFurthestDistance] = useState("");
   const [plannedLoops, setPlannedLoops] = useState("");
+  const [community, setCommunity] = useState("");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await fetch("/api/submissions", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ source: "waitlist", email, furthestDistance, plannedLoops }),
+      body: JSON.stringify({ source: "waitlist", email, furthestDistance, plannedLoops, community }),
     });
     setSubmitted(true);
   };
@@ -114,6 +115,19 @@ export default function WaitlistPage() {
                 value={plannedLoops}
                 onChange={(e) => setPlannedLoops(e.target.value)}
                 placeholder="e.g., 10, 15, until I drop"
+                className="w-full input-styled"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                COMMUNITY
+              </label>
+              <input
+                type="text"
+                value={community}
+                onChange={(e) => setCommunity(e.target.value)}
+                placeholder="Which community are you from?"
                 className="w-full input-styled"
               />
             </div>

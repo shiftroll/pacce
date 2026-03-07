@@ -7,6 +7,7 @@ export interface Submission {
   email: string;
   furthestDistance: string;
   plannedLoops: string;
+  community: string;
   submittedAt: string;
 }
 
@@ -16,7 +17,7 @@ const submissionsStore: Submission[] = [];
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { source, email, furthestDistance, plannedLoops } = body;
+    const { source, email, furthestDistance, plannedLoops, community } = body;
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
@@ -28,6 +29,7 @@ export async function POST(request: NextRequest) {
       email,
       furthestDistance: furthestDistance || "",
       plannedLoops: plannedLoops || "",
+      community: community || "",
       submittedAt: new Date().toISOString(),
     };
 
