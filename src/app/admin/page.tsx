@@ -1,19 +1,22 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { RefreshCw } from "lucide-react";
 import type { Submission } from "@/app/api/submissions/route";
+
+const STORAGE_KEY = "pacce_admin_token";
 
 export default function AdminPage() {
   const [submissions, setSubmissions] = useState<Submission[]>([]);
   const [total, setTotal] = useState(0);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [token, setToken] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [alwaysLogin, setAlwaysLogin] = useState(false);
 
   const fetchSubmissions = async (authToken: string) => {
     setLoading(true);
@@ -23,8 +26,11 @@ export default function AdminPage() {
         headers: { Authorization: `Bearer ${authToken}` },
       });
       if (res.status === 401) {
-        setError("Session expired. Please sign in again.");
+        // Stored token is no longer valid — clear it
+        localStorage.removeItem(STORAGE_KEY);
         setAuthenticated(false);
+        setToken("");
+        setError("Session expired. Please sign in again.");
         return;
       }
       const data = await res.json();
@@ -36,6 +42,19 @@ export default function AdminPage() {
       setLoading(false);
     }
   };
+
+  // On mount: check for a persisted token and auto-login
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      setToken(stored);
+      setAuthenticated(true);
+      fetchSubmissions(stored);
+    } else {
+      setLoading(false);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -54,12 +73,25 @@ export default function AdminPage() {
       const { token: newToken } = await res.json();
       setToken(newToken);
       setAuthenticated(true);
+      if (alwaysLogin) {
+        localStorage.setItem(STORAGE_KEY, newToken);
+      }
       await fetchSubmissions(newToken);
     } catch {
       setError("Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleSignOut = () => {
+    localStorage.removeItem(STORAGE_KEY);
+    setAuthenticated(false);
+    setToken("");
+    setSubmissions([]);
+    setTotal(0);
+    setUsername("");
+    setPassword("");
   };
 
   const sourceLabel: Record<string, string> = {
@@ -101,6 +133,27 @@ export default function AdminPage() {
                 required
               />
             </div>
+
+            <label className="flex items-center gap-3 cursor-pointer select-none">
+              <div
+                role="checkbox"
+                aria-checked={alwaysLogin}
+                onClick={() => setAlwaysLogin((v) => !v)}
+                className={`w-4 h-4 border flex-shrink-0 flex items-center justify-center transition-colors cursor-pointer ${
+                  alwaysLogin
+                    ? "bg-foreground border-foreground"
+                    : "bg-transparent border-foreground/40 hover:border-foreground/70"
+                }`}
+              >
+                {alwaysLogin && (
+                  <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                    <path d="M1 4L3.5 6.5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-background" />
+                  </svg>
+                )}
+              </div>
+              <span className="text-sm text-foreground/60 tracking-wider">ALWAYS LOGIN</span>
+            </label>
+
             {error && <p className="text-accent-red text-sm">{error}</p>}
             <button
               type="submit"
@@ -128,14 +181,22 @@ export default function AdminPage() {
               {total} total &mdash; {homepageCount} from home, {waitlistCount} from waitlist
             </p>
           </div>
-          <button
-            onClick={() => fetchSubmissions(token)}
-            disabled={loading}
-            className="flex items-center gap-2 px-4 py-2 border border-foreground/30 text-foreground/70 text-sm tracking-wider hover:border-foreground hover:text-foreground transition-colors disabled:opacity-40"
-          >
-            <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
-            REFRESH
-          </button>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => fetchSubmissions(token)}
+              disabled={loading}
+              className="flex items-center gap-2 px-4 py-2 border border-foreground/30 text-foreground/70 text-sm tracking-wider hover:border-foreground hover:text-foreground transition-colors disabled:opacity-40"
+            >
+              <RefreshCw size={14} className={loading ? "animate-spin" : ""} />
+              REFRESH
+            </button>
+            <button
+              onClick={handleSignOut}
+              className="px-4 py-2 border border-foreground/30 text-foreground/70 text-sm tracking-wider hover:border-foreground hover:text-foreground transition-colors"
+            >
+              SIGN OUT
+            </button>
+          </div>
         </div>
 
         {submissions.length === 0 ? (
