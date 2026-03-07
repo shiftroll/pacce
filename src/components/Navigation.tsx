@@ -6,9 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Instagram } from "lucide-react";
 import RypeLogo from "./RypeLogo";
 
-const navLinks = [
-  { href: "/science", label: "Science" },
-];
+const navLinks: { href: string; label: string }[] = [];
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false);

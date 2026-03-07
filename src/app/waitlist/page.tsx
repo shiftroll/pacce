@@ -12,9 +12,13 @@ export default function WaitlistPage() {
   const [furthestDistance, setFurthestDistance] = useState("");
   const [plannedLoops, setPlannedLoops] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log({ email, furthestDistance, plannedLoops });
+    await fetch("/api/submissions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ source: "waitlist", email, furthestDistance, plannedLoops }),
+    });
     setSubmitted(true);
   };
 
