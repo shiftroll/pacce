@@ -1,8 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { randomBytes } from "crypto";
-
-// In-memory token store (tokens expire on server restart)
-export const validTokens = new Set<string>();
+import { validTokens } from "@/lib/adminTokens";
 
 const ADMIN_USERNAME = process.env.ADMIN_USERNAME ?? "admin";
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD ?? "last-MANstanding";
