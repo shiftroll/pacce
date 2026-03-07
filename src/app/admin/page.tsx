@@ -189,6 +189,7 @@ export default function AdminPage() {
                   <th className="text-left py-3 pr-6 text-foreground/50 tracking-wider font-medium">EMAIL</th>
                   <th className="text-left py-3 pr-6 text-foreground/50 tracking-wider font-medium">DISTANCE</th>
                   <th className="text-left py-3 pr-6 text-foreground/50 tracking-wider font-medium">LOOPS</th>
+                  <th className="text-left py-3 pr-6 text-foreground/50 tracking-wider font-medium">COMMUNITY</th>
                   <th className="py-3 w-16" />
                 </tr>
               </thead>
@@ -211,6 +212,7 @@ export default function AdminPage() {
                     <td className="py-3 pr-6 text-foreground">{s.email}</td>
                     <td className="py-3 pr-6 text-foreground/80">{s.furthestDistance || "—"}</td>
                     <td className="py-3 pr-6 text-foreground/80">{s.plannedLoops || "—"}</td>
+                    <td className="py-3 pr-6 text-foreground/80">{s.community || "—"}</td>
                     <td className="py-3">
                       {deletingId === s.id ? (
                         <div className="flex items-center gap-2 justify-end whitespace-nowrap">

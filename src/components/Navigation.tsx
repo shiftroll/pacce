@@ -70,7 +70,7 @@ export default function Navigation() {
             {/* Right Section - Instagram */}
             <div className="flex items-center gap-4">
               <a
-                href="https://instagram.com/rlooprun"
+                href="https://instagram.com/rype.fuel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hidden md:flex p-2 text-foreground hover:opacity-70 transition-opacity"
@@ -129,7 +129,7 @@ export default function Navigation() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                href="https://instagram.com/rlooprun"
+                href="https://instagram.com/rype.fuel"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-8 text-foreground hover:opacity-70 transition-opacity"
