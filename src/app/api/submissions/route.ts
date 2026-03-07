@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { validTokens } from "@/app/api/admin/login/route";
+import { validTokens } from "@/lib/adminTokens";
 
 export interface Submission {
   id: string;
