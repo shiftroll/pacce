@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { validTokens } from "@/app/api/admin/login/route";
 
 export interface Submission {
   id: string;
@@ -39,10 +40,9 @@ export async function POST(request: NextRequest) {
 }
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const adminKey = searchParams.get("key");
+  const token = request.headers.get("Authorization")?.replace("Bearer ", "");
 
-  if (adminKey !== process.env.ADMIN_API_KEY && adminKey !== "admin") {
+  if (!token || !validTokens.has(token)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
