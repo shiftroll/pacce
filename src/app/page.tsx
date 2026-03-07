@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
@@ -38,10 +37,14 @@ export default function Home() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log({ email, furthestDistance, plannedLoops });
+      await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "homepage", email, furthestDistance, plannedLoops }),
+      });
       setSubmitted(true);
     }
   };
@@ -182,11 +185,7 @@ export default function Home() {
                       THE SURVIVAL SECRET
                     </h3>
                     <p className="text-foreground/70 font-body">
-                      Get first access to our{" "}
-                      <Link href="/science" className="underline hover:text-foreground">
-                        performance nutrition products
-                      </Link>{" "}
-                      engineered specifically for endurance events like Last Man Standing.
+                      Get first access to our performance nutrition products engineered specifically for endurance events like Last Man Standing.
                     </p>
                   </div>
                 </div>
