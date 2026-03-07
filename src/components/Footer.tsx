@@ -33,7 +33,7 @@ export default function Footer() {
 
           {/* Social */}
           <a
-            href="https://instagram.com/rlooprun"
+            href="https://instagram.com/rype.fuel"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
