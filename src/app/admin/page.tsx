@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { RefreshCw } from "lucide-react";
 import type { Submission } from "@/app/api/submissions/route";
 
@@ -9,23 +9,27 @@ export default function AdminPage() {
   const [total, setTotal] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [key, setKey] = useState("");
+  const [token, setToken] = useState("");
   const [authenticated, setAuthenticated] = useState(false);
 
-  const fetchSubmissions = async (adminKey: string) => {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const fetchSubmissions = async (authToken: string) => {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`/api/submissions?key=${encodeURIComponent(adminKey)}`);
+      const res = await fetch("/api/submissions", {
+        headers: { Authorization: `Bearer ${authToken}` },
+      });
       if (res.status === 401) {
-        setError("Invalid admin key.");
+        setError("Session expired. Please sign in again.");
         setAuthenticated(false);
         return;
       }
       const data = await res.json();
       setSubmissions(data.submissions);
       setTotal(data.total);
-      setAuthenticated(true);
     } catch {
       setError("Failed to load submissions.");
     } finally {
@@ -33,17 +37,30 @@ export default function AdminPage() {
     }
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    fetchSubmissions(key);
-  };
-
-  useEffect(() => {
-    if (authenticated) {
-      fetchSubmissions(key);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password }),
+      });
+      if (res.status === 401) {
+        setError("Invalid username or password.");
+        return;
+      }
+      const { token: newToken } = await res.json();
+      setToken(newToken);
+      setAuthenticated(true);
+      await fetchSubmissions(newToken);
+    } catch {
+      setError("Login failed. Please try again.");
+    } finally {
+      setLoading(false);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  };
 
   const sourceLabel: Record<string, string> = {
     homepage: "Home",
@@ -58,14 +75,29 @@ export default function AdminPage() {
           <form onSubmit={handleLogin} className="space-y-4">
             <div>
               <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
-                ADMIN KEY
+                USERNAME
+              </label>
+              <input
+                type="text"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                className="w-full input-styled"
+                placeholder="Username"
+                autoComplete="username"
+                required
+              />
+            </div>
+            <div>
+              <label className="block text-sm text-foreground/60 mb-2 tracking-wider">
+                PASSWORD
               </label>
               <input
                 type="password"
-                value={key}
-                onChange={(e) => setKey(e.target.value)}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="w-full input-styled"
-                placeholder="Enter admin key"
+                placeholder="Password"
+                autoComplete="current-password"
                 required
               />
             </div>
@@ -75,7 +107,7 @@ export default function AdminPage() {
               disabled={loading}
               className="w-full py-3 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors disabled:opacity-50"
             >
-              {loading ? "LOADING..." : "SIGN IN"}
+              {loading ? "SIGNING IN..." : "SIGN IN"}
             </button>
           </form>
         </div>
@@ -97,7 +129,7 @@ export default function AdminPage() {
             </p>
           </div>
           <button
-            onClick={() => fetchSubmissions(key)}
+            onClick={() => fetchSubmissions(token)}
             disabled={loading}
             className="flex items-center gap-2 px-4 py-2 border border-foreground/30 text-foreground/70 text-sm tracking-wider hover:border-foreground hover:text-foreground transition-colors disabled:opacity-40"
           >
