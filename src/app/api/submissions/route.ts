@@ -39,10 +39,13 @@ export async function POST(request: NextRequest) {
   }
 }
 
-export async function GET(request: NextRequest) {
+function authCheck(request: NextRequest) {
   const token = request.headers.get("Authorization")?.replace("Bearer ", "");
+  return token && validTokens.has(token);
+}
 
-  if (!token || !validTokens.has(token)) {
+export async function GET(request: NextRequest) {
+  if (!authCheck(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
@@ -50,4 +53,24 @@ export async function GET(request: NextRequest) {
     submissions: submissionsStore.slice().reverse(),
     total: submissionsStore.length,
   });
+}
+
+export async function DELETE(request: NextRequest) {
+  if (!authCheck(request)) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  const { searchParams } = new URL(request.url);
+  const id = searchParams.get("id");
+  if (!id) {
+    return NextResponse.json({ error: "Missing id" }, { status: 400 });
+  }
+
+  const idx = submissionsStore.findIndex((s) => s.id === id);
+  if (idx === -1) {
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
+  }
+
+  submissionsStore.splice(idx, 1);
+  return NextResponse.json({ success: true });
 }
