@@ -241,6 +241,7 @@ export default function Home() {
                       <option value="10K">10K</option>
                       <option value="15K">15K</option>
                       <option value="Marathon">Marathon</option>
+                      <option value="Ultra (>50K)">Ultra (&gt;50K)</option>
                     </select>
                     {errors.furthestDistance && (
                       <p className="text-accent-red text-sm mt-1">{errors.furthestDistance}</p>

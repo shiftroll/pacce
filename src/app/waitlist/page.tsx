@@ -4,7 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from "lucide-react";
 
-const distanceOptions = ["5K", "10K", "Half Marathon", "Marathon", "50K", "100K+"];
+const distanceOptions = ["5K", "10K", "Half Marathon", "Marathon", "50K", "Ultra (>50K)", "100K+"];
 
 export default function WaitlistPage() {
   const [submitted, setSubmitted] = useState(false);
