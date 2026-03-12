@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validTokens } from "@/lib/adminTokens";
+import { supabaseAdmin } from "@/lib/supabase";
 
 export interface Submission {
   id: string;
@@ -11,9 +12,6 @@ export interface Submission {
   submittedAt: string;
 }
 
-// In-memory store (replace with a database in production)
-const submissionsStore: Submission[] = [];
-
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -23,21 +21,29 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 });
     }
 
-    const submission: Submission = {
-      id: `sub_${Date.now()}_${Math.random().toString(36).slice(2, 9)}`,
-      source: source || "homepage",
-      email,
-      furthestDistance: furthestDistance || "",
-      plannedLoops: plannedLoops || "",
-      community: community || "",
-      submittedAt: new Date().toISOString(),
-    };
+    const { data, error } = await supabaseAdmin
+      .from("waitlist_submissions")
+      .insert([
+        {
+          source: source || "homepage",
+          email,
+          furthestDistance: furthestDistance || "",
+          plannedLoops: plannedLoops || "",
+          community: community || "",
+        },
+      ])
+      .select("id")
+      .single();
 
-    submissionsStore.push(submission);
+    if (error) {
+      console.error("Supabase insert error:", error);
+      return NextResponse.json({ error: "Failed to save submission to database" }, { status: 500 });
+    }
 
-    return NextResponse.json({ success: true, id: submission.id });
-  } catch {
-    return NextResponse.json({ error: "Failed to save submission" }, { status: 500 });
+    return NextResponse.json({ success: true, id: data.id });
+  } catch (error) {
+    console.error("Submission POST catch error:", error);
+    return NextResponse.json({ error: "Failed to process submission" }, { status: 500 });
   }
 }
 
@@ -51,10 +57,25 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  return NextResponse.json({
-    submissions: submissionsStore.slice().reverse(),
-    total: submissionsStore.length,
-  });
+  try {
+    const { data: submissions, error, count } = await supabaseAdmin
+      .from("waitlist_submissions")
+      .select("*", { count: "exact" })
+      .order("submittedAt", { ascending: false });
+
+    if (error) {
+      console.error("Supabase GET error:", error);
+      return NextResponse.json({ error: "Failed to fetch submissions" }, { status: 500 });
+    }
+
+    return NextResponse.json({
+      submissions: submissions || [],
+      total: count || 0,
+    });
+  } catch (error) {
+    console.error("Submission GET catch error:", error);
+    return NextResponse.json({ error: "Failed to fetch submissions" }, { status: 500 });
+  }
 }
 
 export async function DELETE(request: NextRequest) {
@@ -68,11 +89,20 @@ export async function DELETE(request: NextRequest) {
     return NextResponse.json({ error: "Missing id" }, { status: 400 });
   }
 
-  const idx = submissionsStore.findIndex((s) => s.id === id);
-  if (idx === -1) {
-    return NextResponse.json({ error: "Not found" }, { status: 404 });
-  }
+  try {
+    const { error } = await supabaseAdmin
+      .from("waitlist_submissions")
+      .delete()
+      .eq("id", id);
 
-  submissionsStore.splice(idx, 1);
-  return NextResponse.json({ success: true });
+    if (error) {
+      console.error("Supabase DELETE error:", error);
+      return NextResponse.json({ error: "Failed to delete submission" }, { status: 500 });
+    }
+
+    return NextResponse.json({ success: true });
+  } catch (error) {
+    console.error("Submission DELETE catch error:", error);
+    return NextResponse.json({ error: "Failed to delete submission" }, { status: 500 });
+  }
 }
