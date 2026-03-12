@@ -94,11 +94,10 @@ export default function WaitlistPage() {
                     key={option}
                     type="button"
                     onClick={() => setFurthestDistance(option)}
-                    className={`px-4 py-3 text-sm font-medium tracking-wider transition-all border ${
-                      furthestDistance === option
+                    className={`px-4 py-3 text-sm font-medium tracking-wider transition-all border ${furthestDistance === option
                         ? "bg-foreground text-background border-foreground"
                         : "bg-transparent text-foreground/70 border-foreground/30 hover:border-foreground/60"
-                    }`}
+                      }`}
                   >
                     {option}
                   </button>

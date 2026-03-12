@@ -13,6 +13,8 @@ export default function Home() {
   const [plannedLoops, setPlannedLoops] = useState("");
   const [community, setCommunity] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [errors, setErrors] = useState<{ email?: string; furthestDistance?: string; plannedLoops?: string }>({});
 
   const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -41,12 +43,26 @@ export default function Home() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      await fetch("/api/submissions", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ source: "homepage", email, furthestDistance, plannedLoops, community }),
-      });
-      setSubmitted(true);
+      setIsSubmitting(true);
+      setSubmitError(null);
+      try {
+        const res = await fetch("/api/submissions", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ source: "homepage", email, furthestDistance, plannedLoops, community }),
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.error || "Failed to submit form");
+        }
+
+        setSubmitted(true);
+      } catch (err: any) {
+        setSubmitError(err.message || "Something went wrong. Please try again.");
+      } finally {
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -285,11 +301,15 @@ export default function Home() {
 
                   <button
                     type="submit"
-                    className="w-full mt-8 py-4 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2"
+                    disabled={isSubmitting}
+                    className="w-full mt-8 py-4 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
                   >
-                    JOIN THE INNER CIRCLE
-                    <ArrowRight size={18} />
+                    {isSubmitting ? "PROCESSING..." : "JOIN THE INNER CIRCLE"}
+                    {!isSubmitting && <ArrowRight size={18} />}
                   </button>
+                  {submitError && (
+                    <p className="text-accent-red text-center text-sm">{submitError}</p>
+                  )}
                 </form>
               </ScrollReveal>
             ) : (
