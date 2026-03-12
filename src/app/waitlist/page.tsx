@@ -32,8 +32,8 @@ export default function WaitlistPage() {
       }
 
       setSubmitted(true);
-    } catch (err: any) {
-      setSubmitError(err.message || "Something went wrong. Please try again.");
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
