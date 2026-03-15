@@ -1,11 +1,19 @@
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 
-let _resend: Resend | null = null;
+let _transporter: nodemailer.Transporter | null = null;
 
-function getResend(): Resend | null {
-  if (!process.env.RESEND_API_KEY) return null;
-  if (!_resend) _resend = new Resend(process.env.RESEND_API_KEY);
-  return _resend;
+function getTransporter(): nodemailer.Transporter | null {
+  if (!process.env.GMAIL_USER || !process.env.GMAIL_APP_PASSWORD) return null;
+  if (!_transporter) {
+    _transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
+  }
+  return _transporter;
 }
 
 const NOTIFICATION_EMAIL = "team@rype.co.id";
@@ -139,22 +147,22 @@ function buildEmailHtml(data: SubmissionData): string {
 }
 
 export async function sendSubmissionEmail(data: SubmissionData): Promise<void> {
-  const resend = getResend();
-  if (!resend) {
-    console.warn("RESEND_API_KEY not set — skipping submission email");
+  const transporter = getTransporter();
+  if (!transporter) {
+    console.warn("GMAIL_USER or GMAIL_APP_PASSWORD not set — skipping submission email");
     return;
   }
 
   const sourceLabel = data.source === "waitlist" ? "Waitlist" : "Homepage";
 
-  const { error } = await resend.emails.send({
-    from: "Last Man Standing <noreply@rype.co.id>",
-    to: [NOTIFICATION_EMAIL],
-    subject: `New ${sourceLabel} Submission — ${data.email}`,
-    html: buildEmailHtml(data),
-  });
-
-  if (error) {
+  try {
+    await transporter.sendMail({
+      from: `Last Man Standing <${process.env.GMAIL_USER}>`,
+      to: NOTIFICATION_EMAIL,
+      subject: `New ${sourceLabel} Submission — ${data.email}`,
+      html: buildEmailHtml(data),
+    });
+  } catch (error) {
     console.error("Failed to send submission email:", error);
   }
 }
