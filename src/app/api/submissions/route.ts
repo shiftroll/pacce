@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { validTokens } from "@/lib/adminTokens";
 import { supabaseAdmin } from "@/lib/supabase";
+import { sendSubmissionEmail } from "@/lib/email";
 
 export interface Submission {
   id: string;
@@ -39,6 +40,15 @@ export async function POST(request: NextRequest) {
       console.error("Supabase insert error:", error);
       return NextResponse.json({ error: "Failed to save submission to database" }, { status: 500 });
     }
+
+    // Send email notification (non-blocking — don't fail the submission if email fails)
+    sendSubmissionEmail({
+      source: source || "homepage",
+      email,
+      furthestDistance: furthestDistance || "",
+      plannedLoops: plannedLoops || "",
+      community: community || "",
+    }).catch((err) => console.error("Email send error:", err));
 
     return NextResponse.json({ success: true, id: data.id });
   } catch (error) {
