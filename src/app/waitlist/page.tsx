@@ -8,6 +8,8 @@ const distanceOptions = ["5K", "10K", "Half Marathon", "Marathon", "50K", "Ultra
 
 export default function WaitlistPage() {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
   const [email, setEmail] = useState("");
   const [furthestDistance, setFurthestDistance] = useState("");
   const [plannedLoops, setPlannedLoops] = useState("");
@@ -15,12 +17,26 @@ export default function WaitlistPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    await fetch("/api/submissions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ source: "waitlist", email, furthestDistance, plannedLoops, community }),
-    });
-    setSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+    try {
+      const res = await fetch("/api/submissions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ source: "waitlist", email, furthestDistance, plannedLoops, community }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      setSubmitted(true);
+    } catch (err) {
+      setSubmitError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (submitted) {
@@ -94,11 +110,10 @@ export default function WaitlistPage() {
                     key={option}
                     type="button"
                     onClick={() => setFurthestDistance(option)}
-                    className={`px-4 py-3 text-sm font-medium tracking-wider transition-all border ${
-                      furthestDistance === option
-                        ? "bg-foreground text-background border-foreground"
-                        : "bg-transparent text-foreground/70 border-foreground/30 hover:border-foreground/60"
-                    }`}
+                    className={`px-4 py-3 text-sm font-medium tracking-wider transition-all border ${furthestDistance === option
+                      ? "bg-foreground text-background border-foreground"
+                      : "bg-transparent text-foreground/70 border-foreground/30 hover:border-foreground/60"
+                      }`}
                   >
                     {option}
                   </button>
@@ -134,11 +149,15 @@ export default function WaitlistPage() {
 
             <button
               type="submit"
-              className="w-full mt-8 py-4 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2"
+              disabled={isSubmitting}
+              className="w-full mt-8 py-4 bg-foreground text-background font-medium tracking-wider hover:bg-foreground/90 transition-colors flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
             >
-              NOTIFY ME
-              <ArrowRight size={18} />
+              {isSubmitting ? "PROCESSING..." : "NOTIFY ME"}
+              {!isSubmitting && <ArrowRight size={18} />}
             </button>
+            {submitError && (
+              <p className="text-accent-red text-center text-sm">{submitError}</p>
+            )}
 
             <p className="text-center text-foreground/40 text-sm">
               No spam. Unsubscribe anytime.
@@ -149,3 +168,4 @@ export default function WaitlistPage() {
     </section>
   );
 }
+
